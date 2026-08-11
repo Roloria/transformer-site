@@ -1741,7 +1741,8 @@ img, svg { display: block; max-width: 100%; }
 
 /* ----- INTUITION BOX (use before technical concepts) ----- */
 .intuition {
-  margin: 0 0 36px;
+  margin: 0 auto 36px;
+  max-width: 880px;
   padding: 24px 28px;
   background: linear-gradient(135deg, rgba(255,190,11,0.05), rgba(255,122,69,0.04));
   border: 1px solid rgba(255,190,11,0.25);
@@ -1776,10 +1777,10 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text);
   margin: 0;
-  max-width: 56ch;
+  max-width: none;
 }
 .intuition-text b {
   font-weight: 500;
@@ -1789,7 +1790,8 @@ img, svg { display: block; max-width: 100%; }
 
 /* ----- CONFUSION (FAQ / misconception) callouts ----- */
 .confusion {
-  margin: 32px 0;
+  margin: 32px auto;
+  max-width: 880px;
   padding: 22px 26px;
   background: rgba(157,78,221,0.04);
   border: 1px solid rgba(157,78,221,0.22);
