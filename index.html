@@ -1162,36 +1162,42 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
       <p data-i18n="var.gptBody">Decoder-only. Predict the next token over a huge corpus. The recipe
       that scales. Now powering most "AI assistants" you talk to.</p>
       <div class="var-stats"><span data-i18n="var.gptStat1">Decoder-only</span><span data-i18n="var.gptStat2">Autoregressive</span></div>
+      <a class="var-link" href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener" data-i18n="var.gptLink">Read paper →</a>
     </article>
     <article class="variant">
       <header><span class="var-year">2018</span><h3 data-i18n="var.bertTitle">BERT</h3><span class="var-by" data-i18n="var.bertBy">Google</span></header>
       <p data-i18n="var.bertBody">Encoder-only. Mask out 15% of tokens, predict them from context
       in both directions. Bidirectional understanding — but not a generator.</p>
       <div class="var-stats"><span data-i18n="var.bertStat1">Encoder-only</span><span data-i18n="var.bertStat2">Bidirectional</span></div>
+      <a class="var-link" href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener" data-i18n="var.bertLink">Read paper →</a>
     </article>
     <article class="variant">
       <header><span class="var-year">2019</span><h3 data-i18n="var.t5Title">T5</h3><span class="var-by" data-i18n="var.t5By">Google</span></header>
       <p data-i18n="var.t5Body">Encoder-decoder. Re-cast every NLP task as "text in, text out".
       Translation, summarization, classification — one architecture.</p>
       <div class="var-stats"><span data-i18n="var.t5Stat1">Enc–Dec</span><span data-i18n="var.t5Stat2">Seq2seq</span></div>
+      <a class="var-link" href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener" data-i18n="var.t5Link">Read paper →</a>
     </article>
     <article class="variant">
       <header><span class="var-year">2020</span><h3 data-i18n="var.ropeTitle">RoPE</h3><span class="var-by" data-i18n="var.ropeBy">Various</span></header>
       <p data-i18n="var.ropeBody">Rotary positional embeddings replace sinusoidal. Better length
       generalization, cleaner relative-position arithmetic in attention.</p>
       <div class="var-stats"><span data-i18n="var.ropeStat1">RoPE</span><span data-i18n="var.ropeStat2">Relative pos</span></div>
+      <a class="var-link" href="https://arxiv.org/abs/2104.09864" target="_blank" rel="noopener" data-i18n="var.ropeLink">Read paper →</a>
     </article>
     <article class="variant">
       <header><span class="var-year">2023</span><h3 data-i18n="var.llamaTitle">LLaMA</h3><span class="var-by" data-i18n="var.llamaBy">Meta</span></header>
       <p data-i18n="var.llamaBody">Open decoder-only. RMSNorm, SwiGLU FFN, RoPE. Defined the modern
       "Llama-style" recipe that almost every open model follows today.</p>
       <div class="var-stats"><span data-i18n="var.llamaStat1">Decoder</span><span data-i18n="var.llamaStat2">SwiGLU</span></div>
+      <a class="var-link" href="https://arxiv.org/abs/2302.13971" target="_blank" rel="noopener" data-i18n="var.llamaLink">Read paper →</a>
     </article>
     <article class="variant">
       <header><span class="var-year">2024</span><h3 data-i18n="var.moeTitle">MoE</h3><span class="var-by" data-i18n="var.moeBy">Mixtral, Grok</span></header>
       <p data-i18n="var.moeBody">Sparse FFN: route each token to a few of many expert sub-networks.
       Trillion-parameter scale, fractionally more compute per token.</p>
       <div class="var-stats"><span data-i18n="var.moeStat1">Sparse FFN</span><span data-i18n="var.moeStat2">Routing</span></div>
+      <a class="var-link" href="https://arxiv.org/abs/2401.04088" target="_blank" rel="noopener" data-i18n="var.moeLink">Read paper →</a>
     </article>
   </div>
 
@@ -1309,19 +1315,19 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
       <div>
         <h4 data-i18n="foot.readNext">Read next</h4>
         <ul>
-          <li>The Illustrated Transformer — Jay Alammar</li>
-          <li>Attention Is All You Need — Vaswani et al.</li>
-          <li>The Annotated Transformer — Harvard NLP</li>
-          <li>Formal Algorithms for Transformers — Crabbé et al.</li>
+          <li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener" data-i18n="foot.read1">The Illustrated Transformer — Jay Alammar</a></li>
+          <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener" data-i18n="foot.read2">Attention Is All You Need — Vaswani et al.</a></li>
+          <li><a href="https://nlp.seas.harvard.edu/annotated-transformer/" target="_blank" rel="noopener" data-i18n="foot.read3">The Annotated Transformer — Harvard NLP</a></li>
+          <li><a href="https://arxiv.org/abs/2207.09238" target="_blank" rel="noopener" data-i18n="foot.read4">Formal Algorithms for Transformers — Crabbé et al.</a></li>
         </ul>
       </div>
       <div>
         <h4 data-i18n="foot.impls">Implementations</h4>
         <ul>
-          <li>minbpe (BPE tokenizer)</li>
-          <li>PyTorch nn.Transformer</li>
-          <li>Karpathy's nanoGPT</li>
-          <li>Hugging Face Transformers</li>
+          <li><a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener" data-i18n="foot.impl1">minbpe (BPE tokenizer)</a></li>
+          <li><a href="https://pytorch.org/docs/stable/generated/torch.nn.Transformer.html" target="_blank" rel="noopener" data-i18n="foot.impl2">PyTorch nn.Transformer</a></li>
+          <li><a href="https://github.com/karpathy/nanoGPT" target="_blank" rel="noopener" data-i18n="foot.impl3">Karpathy's nanoGPT</a></li>
+          <li><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener" data-i18n="foot.impl4">Hugging Face Transformers</a></li>
         </ul>
       </div>
       <div>
