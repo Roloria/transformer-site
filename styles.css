@@ -2236,3 +2236,82 @@ img, svg { display: block; max-width: 100%; }
   content: '';
   margin-right: 0;
 }
+
+/* ============ LANGUAGE SWITCH ============ */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-2);
+  flex-shrink: 0;
+}
+.lang-btn {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-dim);
+  transition: all .2s var(--ease);
+  cursor: pointer;
+}
+.lang-btn:hover { color: var(--text); }
+.lang-btn.is-active {
+  background: var(--text);
+  color: var(--bg);
+}
+.lang-sep {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-mute);
+}
+
+/* Chinese typography adjustments */
+html[data-current-lang="zh"] .section-title,
+html[data-current-lang="zh"] .hero-title,
+html[data-current-lang="zh"] .intro-aside-title {
+  letter-spacing: -0.01em;
+}
+html[data-current-lang="zh"] body {
+  font-feature-settings: normal;
+}
+html[data-current-lang="zh"] .hero-title {
+  max-width: none;
+}
+html[data-current-lang="zh"] .section-title em,
+html[data-current-lang="zh"] .hero-title em {
+  white-space: normal;
+}
+@media (max-width: 560px) {
+  .lang-switch { display: none; }
+}
+
+/* Chinese font stacks — Instrument Serif has no CJK glyphs, fall back to serif CJK */
+html[data-current-lang="zh"] {
+  --serif: 'Instrument Serif', 'Songti SC', 'STSong', 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+  --sans:  'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+}
+html[data-current-lang="zh"] .hero-title {
+  font-family: var(--serif);
+  line-height: 1.06;
+}
+html[data-current-lang="zh"] .hero-lede,
+html[data-current-lang="zh"] .section-lede {
+  line-height: 1.75;
+}
+html[data-current-lang="zh"] .intro-list li {
+  font-size: 15px;
+}
+html[data-current-lang="zh"] .glossary-def {
+  font-size: 14px;
+}
+html[data-current-lang="zh"] .worked-step-desc {
+  font-size: 15px;
+  line-height: 1.7;
+}

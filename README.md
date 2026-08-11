@@ -16,6 +16,7 @@ dot-product attention.
   actual numbers at every step
 - **Annotated PyTorch code** — a working MultiHeadAttention in 60 lines
 - **KaTeX math** — formulas render beautifully in-browser
+- **中英双语（i18n）** — 一键切换 EN / 中文，全站（含动态内容、进度侧栏、术语表）完整翻译，语言偏好自动保存
 
 ## Run locally
 

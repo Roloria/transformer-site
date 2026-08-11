@@ -260,7 +260,8 @@ const PG = (function() {
     // small caption
     const cap = document.createElement('span');
     cap.style.cssText = 'width:100%;margin-top:6px;font-size:11px;color:#5a5954;';
-    cap.textContent = `Weighted sum of V vectors using attention weights from "${tokens[selected]}".`;
+    const capText = window.T ? window.T('pg.outputCaption').replace('{token}', tokens[selected]) : `Weighted sum of V vectors using attention weights from "${tokens[selected]}".`;
+    cap.textContent = capText;
     out.appendChild(cap);
   }
 
@@ -277,30 +278,41 @@ const PG = (function() {
 })();
 
 /* ============ 4) MULTI-HEAD ATTENTION CARDS ============ */
-(function buildHeads() {
+var HEADS = (function() {
   const grid = document.getElementById('headsGrid');
-  if (!grid) return;
+  if (!grid) return { rebuild: function(){} };
   const heads = [
-    { name: 'Subject tracker', desc: 'Routes "cat" to subject position, "she" to female antecedents.', color: '#00d4ff', pattern: [[1,.2,0,0,0],[.1,1,.3,.1,0],[0,.1,1,.2,0],[0,0,.2,1,.1],[0,0,0,.1,1]] },
-    { name: 'Verb linker', desc: 'Aligns verbs with their arguments across clauses.', color: '#9d4edd', pattern: [[.4,0,1,0,0],[0,.5,0,1,0],[1,0,.6,0,1],[0,1,0,.5,0],[.3,0,1,0,.7]] },
-    { name: 'Local window', desc: 'A short-range head; mostly attends to the previous token.', color: '#ff5722', pattern: [[1,0,0,0,0],[.8,1,0,0,0],[0,.8,1,0,0],[0,0,.8,1,0],[0,0,0,.8,1]] },
-    { name: 'Punctuation', desc: 'Soft-masks out commas and periods, lets content tokens talk.', color: '#ffbe0b', pattern: [[1,.9,.1,.9,.1],[.9,1,.1,.9,.1],[.1,.1,1,.1,.1],[.9,.9,.1,1,.1],[.1,.1,.1,.1,1]] },
+    { nameKey: 'heads.h1name', descKey: 'heads.h1desc', color: '#00d4ff', pattern: [[1,.2,0,0,0],[.1,1,.3,.1,0],[0,.1,1,.2,0],[0,0,.2,1,.1],[0,0,0,.1,1]] },
+    { nameKey: 'heads.h2name', descKey: 'heads.h2desc', color: '#9d4edd', pattern: [[.4,0,1,0,0],[0,.5,0,1,0],[1,0,.6,0,1],[0,1,0,.5,0],[.3,0,1,0,.7]] },
+    { nameKey: 'heads.h3name', descKey: 'heads.h3desc', color: '#ff5722', pattern: [[1,0,0,0,0],[.8,1,0,0,0],[0,.8,1,0,0],[0,0,.8,1,0],[0,0,0,.8,1]] },
+    { nameKey: 'heads.h4name', descKey: 'heads.h4desc', color: '#ffbe0b', pattern: [[1,.9,.1,.9,.1],[.9,1,.1,.9,.1],[.1,.1,1,.1,.1],[.9,.9,.1,1,.1],[.1,.1,.1,.1,1]] },
   ];
-  heads.forEach((h, idx) => {
-    const card = document.createElement('div');
-    card.className = 'head-card';
-    card.style.setProperty('--hc', h.color);
-    card.innerHTML = `
-      <div class="head-id">HEAD ${String(idx + 1).padStart(2, '0')} · d_k = 64</div>
-      <div class="head-name">${h.name}</div>
-      <div class="head-desc">${h.desc}</div>
-      <div class="head-vis">
-        ${h.pattern.flat().map(v => `<div class="hv-cell" style="--o:${v.toFixed(2)}"></div>`).join('')}
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+  function rebuild() {
+    grid.innerHTML = '';
+    heads.forEach((h, idx) => {
+      const card = document.createElement('div');
+      card.className = 'head-card';
+      card.style.setProperty('--hc', h.color);
+      const name = window.T ? window.T(h.nameKey) : h.nameKey;
+      const desc = window.T ? window.T(h.descKey) : h.descKey;
+      card.innerHTML = `
+        <div class="head-id">HEAD ${String(idx + 1).padStart(2, '0')} · d_k = 64</div>
+        <div class="head-name">${name}</div>
+        <div class="head-desc">${desc}</div>
+        <div class="head-vis">
+          ${h.pattern.flat().map(v => `<div class="hv-cell" style="--o:${v.toFixed(2)}"></div>`).join('')}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+  rebuild();
+  return { rebuild: rebuild };
 })();
+
+window.addEventListener('langchange', function() {
+  if (window.HEADS && window.HEADS.rebuild) window.HEADS.rebuild();
+});
 
 /* ============ 5) POSITIONAL ENCODING HEATMAP (SVG) ============ */
 (function buildPosHeat() {
@@ -449,19 +461,26 @@ class MultiHeadAttention(nn.Module):
   code.innerHTML = html;
 
   const noteData = [
-    { num: '01', body: '<code>W_q</code>, <code>W_k</code>, <code>W_v</code> are three learned linear maps. They turn each token\'s embedding into three distinct "voices."' },
-    { num: '02', body: 'Splitting <code>d_model</code> across <code>h</code> heads gives each head its own d<sub>k</sub>-dimensional subspace to work in — total parameters stay the same.' },
-    { num: '03', body: 'The <code>/ √d_k</code> keeps dot products from growing with dimension, which would push gradients toward zero after softmax.' },
-    { num: '04', body: '<code>mask == 0 → -inf</code> is the standard causal trick. After softmax, those positions get exactly zero weight.' },
-    { num: '05', body: '<code>softmax</code> along the last dimension turns the score matrix into a row-stochastic matrix — a soft alignment.' },
-    { num: '06', body: 'Concatenating heads then projecting with <code>W_o</code> lets the model mix information across heads at every layer.' },
+    { num: '01', bodyKey: 'notes.01' },
+    { num: '02', bodyKey: 'notes.02' },
+    { num: '03', bodyKey: 'notes.03' },
+    { num: '04', bodyKey: 'notes.04' },
+    { num: '05', bodyKey: 'notes.05' },
+    { num: '06', bodyKey: 'notes.06' },
   ];
-  notes.innerHTML = noteData.map(n => `
-    <div class="note">
-      <div class="note-num">${n.num}</div>
-      <div class="note-text">${n.body}</div>
-    </div>
-  `).join('');
+  function rebuildNotes() {
+    notes.innerHTML = noteData.map(n => {
+      const body = window.T ? window.T(n.bodyKey) : n.bodyKey;
+      return `
+        <div class="note">
+          <div class="note-num">${n.num}</div>
+          <div class="note-text">${body}</div>
+        </div>
+      `;
+    }).join('');
+  }
+  rebuildNotes();
+  window.addEventListener('langchange', rebuildNotes);
 })();
 
 /* ============ 7) REVEAL ON SCROLL ============ */
@@ -541,52 +560,25 @@ window.addEventListener('load', () => {
 });
 
 /* ============ PROGRESS RAIL ============ */
-(function setupProgress() {
-  const sections = [
-    { id: 'top',       label: 'Hero' },
-    { id: 'what',      label: 'What is a Transformer?' },
-    { id: 'premise',   label: 'Premise' },
-    { id: 'blueprint', label: 'Blueprint' },
-    { id: 'tokens',    label: 'Tokenization' },
-    { id: 'attention', label: 'Self-Attention' },
-    { id: 'playground',label: 'Playground' },
-    { id: 'multihead', label: 'Multi-Head' },
-    { id: 'positions', label: 'Positional Encoding' },
-    { id: 'ffn',       label: 'Feed-Forward' },
-    { id: 'residual',  label: 'Residual + LayerNorm' },
-    { id: 'split',     label: 'Encoder vs Decoder' },
-    { id: 'worked',    label: 'Worked Example' },
-    { id: 'code',      label: 'The Code' },
-    { id: 'variants',  label: 'Modern Variants' },
-    { id: 'glossary',  label: 'Glossary' }
-  ];
+var PROGRESS = (function() {
+  const sectionIds = ['top','what','premise','blueprint','tokens','attention','playground','multihead','positions','ffn','residual','split','worked','code','variants','glossary'];
 
   const list = document.getElementById('prList');
   const rail = document.getElementById('progressRail');
   const fill = document.getElementById('prBarFill');
   const count = document.getElementById('prCount');
 
-  if (!list || !rail) return;
+  if (!list || !rail) return { rebuild: function(){} };
 
-  // Populate
-  list.innerHTML = sections.map((s, i) => 
-    `<li data-target="${s.id}" title="${s.label}">${s.label}</li>`
-  ).join('');
+  function label(i) {
+    return window.T ? window.T('rail.s' + i) : sectionIds[i];
+  }
 
-  // Click to jump
-  list.querySelectorAll('li').forEach(li => {
-    li.onclick = () => {
-      const el = document.getElementById(li.dataset.target);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
-  });
-
-  // Find current section based on scroll position
   function updateProgress() {
     const y = window.scrollY + window.innerHeight / 3;
     let currentIdx = 0;
-    for (let i = 0; i < sections.length; i++) {
-      const el = document.getElementById(sections[i].id);
+    for (let i = 0; i < sectionIds.length; i++) {
+      const el = document.getElementById(sectionIds[i]);
       if (el && el.offsetTop <= y) currentIdx = i;
     }
 
@@ -607,11 +599,11 @@ window.addEventListener('load', () => {
     });
 
     // Update progress bar
-    const pct = ((currentIdx + 1) / sections.length) * 100;
+    const pct = ((currentIdx + 1) / sectionIds.length) * 100;
     fill.style.width = pct + '%';
 
     // Update count
-    count.textContent = (currentIdx + 1) + ' / ' + sections.length;
+    count.textContent = (currentIdx + 1) + ' / ' + sectionIds.length;
 
     // Show rail after scrolling past hero
     if (window.scrollY > 600) {
@@ -621,10 +613,30 @@ window.addEventListener('load', () => {
     }
   }
 
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
+  function rebuild() {
+    list.innerHTML = sectionIds.map((id, i) =>
+      `<li data-target="${id}" title="${label(i)}">${label(i)}</li>`
+    ).join('');
+    list.querySelectorAll('li').forEach(li => {
+      li.onclick = () => {
+        const el = document.getElementById(li.dataset.target);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      };
+    });
+    updateProgress();
+  }
 
-  // Create mobile progress bar
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  rebuild();
+  return { rebuild: rebuild };
+})();
+
+// Rebuild progress rail on language change
+window.addEventListener('langchange', function() {
+  if (window.PROGRESS && window.PROGRESS.rebuild) window.PROGRESS.rebuild();
+});
+
+(function setupMobile() {
   const mob = document.createElement('div');
   mob.className = 'mobile-progress';
   mob.innerHTML = '<div class="mobile-progress-fill" id="mobFill"></div>';

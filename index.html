@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-current-lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -16,14 +16,14 @@
 <body>
 <!-- PROGRESS RAIL (left side, sticky) -->
 <aside class="progress-rail" id="progressRail" aria-label="Learning progress">
-  <div class="pr-eyebrow">Your path</div>
+  <div class="pr-eyebrow" data-i18n="rail.yourPath">Your path</div>
   <ol class="pr-list" id="prList"></ol>
   <div class="pr-bar">
     <div class="pr-bar-fill" id="prBarFill"></div>
   </div>
   <div class="pr-foot">
-    <span id="prCount">0 / 16</span>
-    <span>sections</span>
+    <span id="prCount" data-i18n="rail.count">0 / 16</span>
+    <span data-i18n="rail.sections">sections</span>
   </div>
 </aside>
 
@@ -32,17 +32,22 @@
   <div class="nav-inner">
     <a class="brand" href="#top">
       <span class="brand-dot"></span>
-      <span class="brand-text">An Annotated Transformer</span>
+      <span class="brand-text" data-i18n="brand">An Annotated Transformer</span>
     </a>
     <nav class="nav-links">
-      <a href="#what">Start</a>
-      <a href="#blueprint">Blueprint</a>
-      <a href="#attention">Attention</a>
-      <a href="#worked">Example</a>
-      <a href="#code">Code</a>
-      <a href="#glossary">Glossary</a>
+      <a href="#what" data-i18n="nav.start">Start</a>
+      <a href="#blueprint" data-i18n="nav.blueprint">Blueprint</a>
+      <a href="#attention" data-i18n="nav.attention">Attention</a>
+      <a href="#worked" data-i18n="nav.example">Example</a>
+      <a href="#code" data-i18n="nav.code">Code</a>
+      <a href="#glossary" data-i18n="nav.glossary">Glossary</a>
     </nav>
-    <a class="nav-cta" href="#playground">Playground →</a>
+    <a class="nav-cta" data-i18n="nav.playground" href="#playground">Playground →</a>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button class="lang-btn is-active" data-lang="en" type="button">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang="zh" type="button">中文</button>
+    </div>
   </div>
 </header>
 
@@ -50,78 +55,78 @@
 <section class="hero" id="top">
   <div class="hero-grid">
     <div class="hero-meta">
-      <span class="kicker">A Visual Field Guide · 2017 → Present</span>
-      <span class="kicker-sub">Vaswani et al. — <em>"Attention Is All You Need"</em></span>
+      <span class="kicker" data-i18n="hero.kicker">A Visual Field Guide · 2017 → Present</span>
+      <span class="kicker-sub" data-i18n="hero.kickerSub">Vaswani et al. — <em>"Attention Is All You Need"</em></span>
     </div>
     <h1 class="hero-title">
-      <span class="ht-line">Attention</span>
-      <span class="ht-line ht-italic">is all you need</span>
-      <span class="ht-line ht-mono">— to understand.</span>
+      <span class="ht-line" data-i18n="hero.t1">Attention</span>
+      <span class="ht-line ht-italic" data-i18n="hero.t2">is all you need</span>
+      <span class="ht-line ht-mono" data-i18n="hero.t3">— to understand.</span>
     </h1>
-    <p class="hero-lede">
+    <p class="hero-lede" data-i18n="hero.lede">
       A systematic walk-through of the architecture that quietly rewrote every
       screen you read on. From tokens to residual streams, from <em>softmax</em>
       to scaled dot-product, every piece, in order, with the math you can
       actually feel.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#premise">Begin reading</a>
-      <a class="btn btn-ghost" href="#playground">Try the playground</a>
+      <a class="btn btn-primary" href="#premise" data-i18n="hero.btnBegin">Begin reading</a>
+      <a class="btn btn-ghost" href="#playground" data-i18n="hero.btnPlay">Try the playground</a>
     </div>
 
     <div class="attention-strip" aria-hidden="true">
       <div class="strip-tokens">
-        <div class="strip-token">The</div>
-        <div class="strip-token">cat</div>
-        <div class="strip-token">sat</div>
-        <div class="strip-token">on</div>
-        <div class="strip-token">the</div>
-        <div class="strip-token">mat</div>
+        <div class="strip-token" data-i18n="strip.the">The</div>
+        <div class="strip-token" data-i18n="strip.cat">cat</div>
+        <div class="strip-token" data-i18n="strip.sat">sat</div>
+        <div class="strip-token" data-i18n="strip.on">on</div>
+        <div class="strip-token" data-i18n="strip.the2">the</div>
+        <div class="strip-token" data-i18n="strip.mat">mat</div>
       </div>
       <svg class="strip-links" id="stripLinks" viewBox="0 0 600 80" preserveAspectRatio="none"></svg>
     </div>
 
     <div class="hero-foot">
-      <div class="stat"><span class="stat-num">65<span>M</span></span><span class="stat-label">parameters in the original 2017 paper</span></div>
-      <div class="stat"><span class="stat-num">O(n²)</span><span class="stat-label">compute, parallel across sequence</span></div>
-      <div class="stat"><span class="stat-num">2017</span><span class="stat-label">when the world changed</span></div>
+      <div class="stat"><span class="stat-num" data-i18n="hero.stat1num">65<span>M</span></span><span class="stat-label" data-i18n="hero.stat1label">parameters in the original 2017 paper</span></div>
+      <div class="stat"><span class="stat-num" data-i18n="hero.stat2num">O(n²)</span><span class="stat-label" data-i18n="hero.stat2label">compute, parallel across sequence</span></div>
+      <div class="stat"><span class="stat-num" data-i18n="hero.stat3num">2017</span><span class="stat-label" data-i18n="hero.stat3label">when the world changed</span></div>
     </div>
   </div>
 </section>
 
 <!-- INTRO — Plain English -->
 <section class="section intro" id="what">
-  <div class="section-tag">00 · Start here</div>
-  <div class="section-meta"><span>1 min read</span><span>start</span></div>
-  <h2 class="section-title">First, what <em>is</em> this thing?</h2>
+  <div class="section-tag" data-i18n="intro.tag">00 · Start here</div>
+  <div class="section-meta"><span data-i18n="meta.startRead">1 min read</span><span data-i18n="meta.start">start</span></div>
+  <h2 class="section-title" data-i18n="intro.title">First, what <em>is</em> this thing?</h2>
 
   <div class="intro-grid">
     <div class="intro-text">
-      <p class="intro-lede">
+      <p class="intro-lede" data-i18n="intro.lede">
         A Transformer is a machine that <strong>reads text</strong> and
         <strong>writes text</strong>. You give it some words; it thinks for a
         moment; it gives you back some words.
       </p>
 
-      <p>
+      <p data-i18n="intro.p1">
         The interesting part is how it <em>thinks</em>. It does <b>not</b>
         read left-to-right, one word at a time, the way you do. Instead, it
         reads the whole sentence <strong>all at once</strong>, and for every
         word it asks a simple question:
       </p>
 
-      <blockquote class="intro-quote">
+      <blockquote class="intro-quote" data-i18n="intro.quote">
         &ldquo;Which other words in this sentence should I pay attention to?&rdquo;
       </blockquote>
 
-      <p>
+      <p data-i18n="intro.p2">
         It writes down the answer, re-writes every word using what it learned
         from the words it looked at, and then asks the same question again
         &mdash; but now with the richer version of each word. It does this
         dozens of times. By the end, every word knows about every other word.
       </p>
 
-      <p>
+      <p data-i18n="intro.p3">
         That's the whole trick. <strong>Read everything, all the time.</strong>
         Everything else &mdash; the math, the diagrams, the long words &mdash;
         is just a careful way to make that one idea work in practice.
@@ -129,21 +134,21 @@
     </div>
 
     <aside class="intro-aside">
-      <h3 class="intro-aside-title">Three sentences to remember</h3>
+      <h3 class="intro-aside-title" data-i18n="intro.asideTitle">Three sentences to remember</h3>
       <ol class="intro-list">
-        <li><b>Input.</b> A piece of text, broken into chunks called <i>tokens</i>.</li>
-        <li><b>Process.</b> Each token reads every other token, repeatedly, and slowly rewrites itself with what it learned.</li>
-        <li><b>Output.</b> A new piece of text &mdash; the next word, a translation, a summary, an answer.</li>
+        <li data-i18n="intro.li1"><b>Input.</b> A piece of text, broken into chunks called <i>tokens</i>.</li>
+        <li data-i18n="intro.li2"><b>Process.</b> Each token reads every other token, repeatedly, and slowly rewrites itself with what it learned.</li>
+        <li data-i18n="intro.li3"><b>Output.</b> A new piece of text &mdash; the next word, a translation, a summary, an answer.</li>
       </ol>
 
       <div class="intro-flow">
         <div class="if-box">
-          <div class="if-label">You type</div>
-          <div class="if-text">&ldquo;Once upon a&rdquo;</div>
+          <div class="if-label" data-i18n="intro.flowIn">You type</div>
+          <div class="if-text" data-i18n="intro.flowInText">&ldquo;Once upon a&rdquo;</div>
         </div>
         <div class="if-arrow">→</div>
         <div class="if-box if-box--mid">
-          <div class="if-label">The model reads it, many times</div>
+          <div class="if-label" data-i18n="intro.flowMid">The model reads it, many times</div>
           <div class="if-mini">
             <span></span><span></span><span></span><span></span>
             <span class="if-pulse"></span><span></span><span></span>
@@ -151,12 +156,12 @@
         </div>
         <div class="if-arrow">→</div>
         <div class="if-box if-box--end">
-          <div class="if-label">You get</div>
-          <div class="if-text">&ldquo;time…&rdquo;</div>
+          <div class="if-label" data-i18n="intro.flowOut">You get</div>
+          <div class="if-text" data-i18n="intro.flowOutText">&ldquo;time…&rdquo;</div>
         </div>
       </div>
 
-      <p class="intro-aside-foot">
+      <p class="intro-aside-foot" data-i18n="intro.foot">
         <b>That's it.</b> Everything below is just unpacking how those three
         boxes work.
       </p>
@@ -164,17 +169,17 @@
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 2</div>
-  <h3 class="up-next-title">Now see why it mattered.</h3>
-  <p class="up-next-desc">Before 2017, language models read like a slow typist. See how the Transformer changed that.</p>
-  <a class="up-next-link" href="#premise">Continue → Premise</a>
+  <div class="up-next-eyebrow" data-i18n="up1.eyebrow">Up next · Section 2</div>
+  <h3 class="up-next-title" data-i18n="up1.title">Now see why it mattered.</h3>
+  <p class="up-next-desc" data-i18n="up1.desc">Before 2017, language models read like a slow typist. See how the Transformer changed that.</p>
+  <a class="up-next-link" href="#premise" data-i18n="up1.link">Continue → Premise</a>
 </div>
 </section>
 
 
 <!-- PREMISE --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="premise.intuition">
     Old models read like a slow typist: one keystroke at a time, trying to
     remember what they just saw in a single mental sticky note. By the time
     they reached the end of a long sentence, the beginning had faded.
@@ -184,12 +189,12 @@
 </div>
 
 <section class="section" id="premise">
-  <div class="section-tag">01 · Premise</div>
-  <div class="section-meta"><span>4 min read</span><span>beginner</span></div>
+  <div class="section-tag" data-i18n="premise.tag">01 · Premise</div>
+  <div class="section-meta"><span data-i18n="meta.premiseRead">4 min read</span><span data-i18n="meta.beginner">beginner</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">Why the Transformer <em>won.</em></h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="premise.title">Why the Transformer <em>won.</em></h2>
+      <p class="section-lede" data-i18n="premise.lede">
         Before 2017, sequence modeling meant recurrence. RNNs and LSTMs read
         tokens one at a time, hiding a memory in a hidden state that grew
         stale with distance. The Transformer threw that out — and replaced
@@ -201,14 +206,14 @@
     <div class="compare">
       <div class="compare-card compare-card--old">
         <header class="cc-head">
-          <span class="cc-tag">Before</span>
-          <h3>RNN / LSTM</h3>
+          <span class="cc-tag" data-i18n="premise.before">Before</span>
+          <h3 data-i18n="premise.rnnTitle">RNN / LSTM</h3>
         </header>
         <ul class="cc-list">
-          <li><b>Sequential.</b> Token <i>n</i> depends on token <i>n−1</i>.</li>
-          <li><b>Vanishing signal.</b> Long-range dependencies decay.</li>
-          <li><b>Hard to parallelize.</b> GPUs sit idle most of the time.</li>
-          <li><b>Hidden bottleneck.</b> One vector carries everything.</li>
+          <li data-i18n="premise.rnn1"><b>Sequential.</b> Token <i>n</i> depends on token <i>n−1</i>.</li>
+          <li data-i18n="premise.rnn2"><b>Vanishing signal.</b> Long-range dependencies decay.</li>
+          <li data-i18n="premise.rnn3"><b>Hard to parallelize.</b> GPUs sit idle most of the time.</li>
+          <li data-i18n="premise.rnn4"><b>Hidden bottleneck.</b> One vector carries everything.</li>
         </ul>
         <svg class="rnn-diagram" viewBox="0 0 420 110" aria-hidden="true">
           <g font-family="JetBrains Mono" font-size="11" fill="#8b8a85">
@@ -232,14 +237,14 @@
 
       <div class="compare-card compare-card--new">
         <header class="cc-head">
-          <span class="cc-tag cc-tag--new">After</span>
-          <h3>Transformer</h3>
+          <span class="cc-tag cc-tag--new" data-i18n="premise.after">After</span>
+          <h3 data-i18n="premise.tfTitle">Transformer</h3>
         </header>
         <ul class="cc-list">
-          <li><b>Parallel.</b> Every token is processed simultaneously.</li>
-          <li><b>Direct routing.</b> Any token can address any other in O(1) hops.</li>
-          <li><b>GPU-friendly.</b> Just big matrix multiplies.</li>
-          <li><b>Content-based addressing.</b> Learned queries &amp; keys.</li>
+          <li data-i18n="premise.tf1"><b>Parallel.</b> Every token is processed simultaneously.</li>
+          <li data-i18n="premise.tf2"><b>Direct routing.</b> Any token can address any other in O(1) hops.</li>
+          <li data-i18n="premise.tf3"><b>GPU-friendly.</b> Just big matrix multiplies.</li>
+          <li data-i18n="premise.tf4"><b>Content-based addressing.</b> Learned queries &amp; keys.</li>
         </ul>
         <svg class="rnn-diagram" viewBox="0 0 420 110" aria-hidden="true">
           <g stroke="#00d4ff" stroke-width="0.6" opacity="0.45">
@@ -262,21 +267,21 @@
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 3</div>
-  <h3 class="up-next-title">See the whole machine.</h3>
-  <p class="up-next-desc">Two stacks, six core ideas, one equation. The blueprint shows every piece you'll meet below.</p>
-  <a class="up-next-link" href="#blueprint">Continue → Blueprint</a>
+  <div class="up-next-eyebrow" data-i18n="up2.eyebrow">Up next · Section 3</div>
+  <h3 class="up-next-title" data-i18n="up2.title">See the whole machine.</h3>
+  <p class="up-next-desc" data-i18n="up2.desc">Two stacks, six core ideas, one equation. The blueprint shows every piece you'll meet below.</p>
+  <a class="up-next-link" href="#blueprint" data-i18n="up2.link">Continue → Blueprint</a>
 </div>
 </section>
 
 <!-- BLUEPRINT -->
 <section class="section section--dark" id="blueprint">
-  <div class="section-tag">02 · Blueprint</div>
-  <div class="section-meta"><span>5 min read</span><span>core</span></div>
-  <h2 class="section-title section-title--center">
+  <div class="section-tag" data-i18n="blueprint.tag">02 · Blueprint</div>
+  <div class="section-meta"><span data-i18n="meta.bpRead">5 min read</span><span data-i18n="meta.core">core</span></div>
+  <h2 class="section-title section-title--center" data-i18n="blueprint.title">
     The whole thing, in one picture.
   </h2>
-  <p class="section-lede section-lede--center">
+  <p class="section-lede section-lede--center" data-i18n="blueprint.lede">
     Two stacks, six core ideas, and one equation you will see on every page
     of the literature. Read it left to right, top to bottom — every block on
     the right expands into a section below.
@@ -300,17 +305,17 @@
       </defs>
 
       <g font-family="Instrument Serif" font-size="34" fill="#f0ede5">
-        <text x="80" y="60">Encoder</text>
-        <text x="80" y="92" font-size="14" font-family="JetBrains Mono" fill="#8b8a85">N = 6 layers</text>
-        <text x="780" y="60">Decoder</text>
-        <text x="780" y="92" font-size="14" font-family="JetBrains Mono" fill="#8b8a85">N = 6 layers</text>
+        <text x="80" y="60" data-i18n="bp.encoder">Encoder</text>
+        <text x="80" y="92" font-size="14" font-family="JetBrains Mono" fill="#8b8a85" data-i18n="bp.encoderSub">N = 6 layers</text>
+        <text x="780" y="60" data-i18n="bp.decoder">Decoder</text>
+        <text x="780" y="92" font-size="14" font-family="JetBrains Mono" fill="#8b8a85" data-i18n="bp.decoderSub">N = 6 layers</text>
       </g>
 
       <g font-family="JetBrains Mono" font-size="13" fill="#f0ede5" text-anchor="middle">
         <rect x="40" y="200" width="120" height="34" rx="4" fill="none" stroke="#5a5954"/>
-        <text x="100" y="222">"Good morning"</text>
+        <text x="100" y="222" data-i18n="bp.input">"Good morning"</text>
         <rect x="40" y="380" width="120" height="34" rx="4" fill="none" stroke="#5a5954"/>
-        <text x="100" y="402">"Bonjour"</text>
+        <text x="100" y="402" data-i18n="bp.output">"Bonjour"</text>
       </g>
       <g stroke="#8b8a85" stroke-width="1.4" fill="none" marker-end="url(#ar)">
         <path d="M160,217 L200,217"/>
@@ -319,22 +324,22 @@
 
       <g>
         <rect x="200" y="190" width="150" height="60" rx="6" fill="#15151a" stroke="#ff5722"/>
-        <text x="275" y="215" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722">Input</text>
-        <text x="275" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722">Embedding</text>
+        <text x="275" y="215" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722" data-i18n="bp.inputEmb">Input</text>
+        <text x="275" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722" data-i18n="bp.embedding">Embedding</text>
       </g>
       <g>
         <rect x="200" y="370" width="150" height="60" rx="6" fill="#15151a" stroke="#ff5722"/>
-        <text x="275" y="395" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722">Output</text>
-        <text x="275" y="412" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722">Embedding</text>
+        <text x="275" y="395" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722" data-i18n="bp.outputEmb">Output</text>
+        <text x="275" y="412" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#ff5722" data-i18n="bp.embedding2">Embedding</text>
       </g>
 
       <g>
         <rect x="360" y="170" width="140" height="40" rx="6" fill="#1a1a1f" stroke="#ffbe0b"/>
-        <text x="430" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffbe0b">+ Positional</text>
+        <text x="430" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffbe0b" data-i18n="bp.positional">+ Positional</text>
       </g>
       <g>
         <rect x="360" y="350" width="140" height="40" rx="6" fill="#1a1a1f" stroke="#ffbe0b"/>
-        <text x="430" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffbe0b">+ Positional</text>
+        <text x="430" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffbe0b" data-i18n="bp.positional2">+ Positional</text>
       </g>
       <g stroke="#8b8a85" stroke-width="1" fill="none" marker-end="url(#ar)">
         <path d="M350,220 L360,200"/>
@@ -344,23 +349,23 @@
       <!-- ENCODER STACK -->
       <g>
         <rect x="540" y="120" width="220" height="380" rx="10" fill="#15151a" stroke="#2a2a32" stroke-dasharray="4,4"/>
-        <text x="650" y="145" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#5a5954">×N</text>
+        <text x="650" y="145" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#5a5954" data-i18n="bp.xN1">×N</text>
 
         <rect x="560" y="170" width="180" height="60" rx="6" fill="url(#attn)" opacity="0.18"/>
         <rect x="560" y="170" width="180" height="60" rx="6" fill="none" stroke="#00d4ff"/>
-        <text x="650" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#00d4ff">Multi-Head</text>
-        <text x="650" y="212" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#00d4ff">Self-Attention</text>
+        <text x="650" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#00d4ff" data-i18n="bp.multiHead">Multi-Head</text>
+        <text x="650" y="212" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#00d4ff" data-i18n="bp.selfAttention">Self-Attention</text>
 
         <rect x="560" y="245" width="180" height="32" rx="4" fill="#1a1a1f" stroke="#5a5954"/>
-        <text x="650" y="266" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Add &amp; LayerNorm</text>
+        <text x="650" y="266" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.addNorm1">Add &amp; LayerNorm</text>
 
         <rect x="560" y="295" width="180" height="60" rx="6" fill="url(#ffn)" opacity="0.18"/>
         <rect x="560" y="295" width="180" height="60" rx="6" fill="none" stroke="#9d4edd"/>
-        <text x="650" y="320" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd">Feed-Forward</text>
-        <text x="650" y="337" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd">Network</text>
+        <text x="650" y="320" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd" data-i18n="bp.ffn1">Feed-Forward</text>
+        <text x="650" y="337" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd" data-i18n="bp.network1">Network</text>
 
         <rect x="560" y="370" width="180" height="32" rx="4" fill="#1a1a1f" stroke="#5a5954"/>
-        <text x="650" y="391" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Add &amp; LayerNorm</text>
+        <text x="650" y="391" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.addNorm2">Add &amp; LayerNorm</text>
 
         <g stroke="#ff5722" stroke-width="1.2" fill="none" opacity="0.6" marker-end="url(#ar)">
           <path d="M650,235 C690,235 700,265 740,265"/>
@@ -374,31 +379,31 @@
       <!-- DECODER STACK -->
       <g>
         <rect x="820" y="120" width="220" height="440" rx="10" fill="#15151a" stroke="#2a2a32" stroke-dasharray="4,4"/>
-        <text x="930" y="145" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#5a5954">×N</text>
+        <text x="930" y="145" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#5a5954" data-i18n="bp.xN2">×N</text>
 
         <rect x="840" y="170" width="180" height="60" rx="6" fill="url(#attn)" opacity="0.18"/>
         <rect x="840" y="170" width="180" height="60" rx="6" fill="none" stroke="#00d4ff"/>
-        <text x="930" y="194" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff">Masked Multi-Head</text>
-        <text x="930" y="211" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff">Self-Attention</text>
+        <text x="930" y="194" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff" data-i18n="bp.masked">Masked Multi-Head</text>
+        <text x="930" y="211" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff" data-i18n="bp.selfAttention2">Self-Attention</text>
 
         <rect x="840" y="245" width="180" height="32" rx="4" fill="#1a1a1f" stroke="#5a5954"/>
-        <text x="930" y="266" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Add &amp; LayerNorm</text>
+        <text x="930" y="266" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.addNorm3">Add &amp; LayerNorm</text>
 
         <rect x="840" y="295" width="180" height="60" rx="6" fill="url(#attn)" opacity="0.18"/>
         <rect x="840" y="295" width="180" height="60" rx="6" fill="none" stroke="#00d4ff"/>
-        <text x="930" y="319" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff">Cross-Attention</text>
-        <text x="930" y="336" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff">(Q from dec, K,V from enc)</text>
+        <text x="930" y="319" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff" data-i18n="bp.cross">Cross-Attention</text>
+        <text x="930" y="336" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#00d4ff" data-i18n="bp.crossSub">(Q from dec, K,V from enc)</text>
 
         <rect x="840" y="370" width="180" height="32" rx="4" fill="#1a1a1f" stroke="#5a5954"/>
-        <text x="930" y="391" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Add &amp; LayerNorm</text>
+        <text x="930" y="391" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.addNorm4">Add &amp; LayerNorm</text>
 
         <rect x="840" y="420" width="180" height="60" rx="6" fill="url(#ffn)" opacity="0.18"/>
         <rect x="840" y="420" width="180" height="60" rx="6" fill="none" stroke="#9d4edd"/>
-        <text x="930" y="445" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd">Feed-Forward</text>
-        <text x="930" y="462" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd">Network</text>
+        <text x="930" y="445" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd" data-i18n="bp.ffn2">Feed-Forward</text>
+        <text x="930" y="462" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#9d4edd" data-i18n="bp.network2">Network</text>
 
         <rect x="840" y="495" width="180" height="32" rx="4" fill="#1a1a1f" stroke="#5a5954"/>
-        <text x="930" y="516" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Add &amp; LayerNorm</text>
+        <text x="930" y="516" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.addNorm5">Add &amp; LayerNorm</text>
 
         <g stroke="#ff5722" stroke-width="1.2" fill="none" opacity="0.6" marker-end="url(#ar)">
           <path d="M930,235 C970,235 980,265 1020,265"/>
@@ -413,20 +418,20 @@
       <g stroke="#ffbe0b" stroke-width="1.6" fill="none" opacity="0.7" marker-end="url(#ar)" stroke-dasharray="6,4">
         <path d="M760,325 L840,325"/>
       </g>
-      <text x="800" y="318" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#ffbe0b">K, V</text>
+      <text x="800" y="318" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#ffbe0b" data-i18n="bp.kv">K, V</text>
 
       <g>
         <rect x="1060" y="330" width="110" height="60" rx="6" fill="#15151a" stroke="#2a2a32"/>
-        <text x="1115" y="358" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Linear</text>
-        <text x="1115" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5">Softmax</text>
+        <text x="1115" y="358" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.linear">Linear</text>
+        <text x="1115" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f0ede5" data-i18n="bp.softmax">Softmax</text>
       </g>
 
       <g stroke="#ff5722" stroke-width="1.4" fill="none" marker-end="url(#ar)">
         <path d="M1170,360 L1190,360"/>
       </g>
       <g font-family="JetBrains Mono" font-size="13" fill="#ff5722">
-        <text x="1175" y="345">P</text>
-        <text x="1175" y="358" font-size="11" fill="#8b8a85">next</text>
+        <text x="1175" y="345" data-i18n="bp.p">P</text>
+        <text x="1175" y="358" font-size="11" fill="#8b8a85" data-i18n="bp.next">next</text>
       </g>
 
       <g stroke="#8b8a85" stroke-width="1.4" fill="none" marker-end="url(#ar)">
@@ -436,34 +441,34 @@
       </g>
 
       <g transform="translate(80, 600)" font-family="JetBrains Mono" font-size="12" fill="#f0ede5">
-        <text x="0" y="0" fill="#8b8a85" font-size="11">LEGEND</text>
+        <text x="0" y="0" fill="#8b8a85" font-size="11" data-i18n="bp.legend">LEGEND</text>
         <g transform="translate(0,20)">
           <rect width="20" height="14" rx="3" fill="url(#emb)"/>
-          <text x="30" y="11">Embedding</text>
+          <text x="30" y="11" data-i18n="bp.legEmb">Embedding</text>
         </g>
         <g transform="translate(150,20)">
           <rect width="20" height="14" rx="3" fill="url(#attn)" opacity="0.4"/>
           <rect width="20" height="14" rx="3" fill="none" stroke="#00d4ff"/>
-          <text x="30" y="11">Attention</text>
+          <text x="30" y="11" data-i18n="bp.legAttn">Attention</text>
         </g>
         <g transform="translate(300,20)">
           <rect width="20" height="14" rx="3" fill="url(#ffn)" opacity="0.4"/>
           <rect width="20" height="14" rx="3" fill="none" stroke="#9d4edd"/>
-          <text x="30" y="11">Feed-Forward</text>
+          <text x="30" y="11" data-i18n="bp.legFfn">Feed-Forward</text>
         </g>
         <g transform="translate(450,20)">
           <line x1="0" y1="7" x2="20" y2="7" stroke="#ff5722" stroke-width="2"/>
-          <text x="30" y="11">Residual</text>
+          <text x="30" y="11" data-i18n="bp.legRes">Residual</text>
         </g>
         <g transform="translate(600,20)">
           <line x1="0" y1="7" x2="20" y2="7" stroke="#ffbe0b" stroke-width="2" stroke-dasharray="4,3"/>
-          <text x="30" y="11">Cross-attn K, V</text>
+          <text x="30" y="11" data-i18n="bp.legCross">Cross-attn K, V</text>
         </g>
       </g>
 
       <g transform="translate(80, 700)">
-        <text x="0" y="0" font-family="JetBrains Mono" font-size="11" fill="#8b8a85">THE ONE EQUATION</text>
-        <text x="0" y="28" font-family="Instrument Serif" font-size="26" fill="#f0ede5" font-style="italic">
+        <text x="0" y="0" font-family="JetBrains Mono" font-size="11" fill="#8b8a85" data-i18n="bp.eqLabel">THE ONE EQUATION</text>
+        <text x="0" y="28" font-family="Instrument Serif" font-size="26" fill="#f0ede5" font-style="italic" data-i18n="bp.equation">
           Attention(Q, K, V) = softmax(QKᵀ / √dₖ) V
         </text>
       </g>
@@ -471,30 +476,30 @@
   </div>
 
   <div class="blueprint-stats">
-    <div class="bs"><div class="bs-num">6</div><div class="bs-label">encoder layers (original)</div></div>
-    <div class="bs"><div class="bs-num">8</div><div class="bs-label">attention heads per layer</div></div>
-    <div class="bs"><div class="bs-num">512</div><div class="bs-label">model dim (d<sub>model</sub>)</div></div>
-    <div class="bs"><div class="bs-num">2048</div><div class="bs-label">inner FFN dim</div></div>
+    <div class="bs"><div class="bs-num" data-i18n="bp.stat1num">6</div><div class="bs-label" data-i18n="bp.stat1label">encoder layers (original)</div></div>
+    <div class="bs"><div class="bs-num" data-i18n="bp.stat2num">8</div><div class="bs-label" data-i18n="bp.stat2label">attention heads per layer</div></div>
+    <div class="bs"><div class="bs-num" data-i18n="bp.stat3num">512</div><div class="bs-label" data-i18n="bp.stat3label">model dim (d<sub>model</sub>)</div></div>
+    <div class="bs"><div class="bs-num" data-i18n="bp.stat4num">2048</div><div class="bs-label" data-i18n="bp.stat4label">inner FFN dim</div></div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 4</div>
-  <h3 class="up-next-title">Strings become numbers.</h3>
-  <p class="up-next-desc">A tokenizer chops text into ~50,000 chunks and looks each up in a giant table. That's the first step.</p>
-  <a class="up-next-link" href="#tokens">Continue → Tokens</a>
+  <div class="up-next-eyebrow" data-i18n="up3.eyebrow">Up next · Section 4</div>
+  <h3 class="up-next-title" data-i18n="up3.title">Strings become numbers.</h3>
+  <p class="up-next-desc" data-i18n="up3.desc">A tokenizer chops text into ~50,000 chunks and looks each up in a giant table. That's the first step.</p>
+  <a class="up-next-link" href="#tokens" data-i18n="up3.link">Continue → Tokens</a>
 </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 10</div>
-  <h3 class="up-next-title">Why residual connections?</h3>
-  <p class="up-next-desc">Every sub-layer wraps itself in a skip connection and a layer norm. Here's why.</p>
-  <a class="up-next-link" href="#residual">Continue → Residual</a>
+  <div class="up-next-eyebrow" data-i18n="up4.eyebrow">Up next · Section 10</div>
+  <h3 class="up-next-title" data-i18n="up4.title">Why residual connections?</h3>
+  <p class="up-next-desc" data-i18n="up4.desc">Every sub-layer wraps itself in a skip connection and a layer norm. Here's why.</p>
+  <a class="up-next-link" href="#residual" data-i18n="up4.link">Continue → Residual</a>
 </div>
 </section>
 
 <!-- TOKENS --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="tokens.intuition">
     A model can't read words &mdash; only numbers. A <b>tokenizer</b> chops
     text into pieces from a fixed vocabulary (about 50,000 of them) and
     turns each piece into an integer. Common words get their own entry; rare
@@ -504,12 +509,12 @@
 </div>
 
 <section class="section" id="tokens">
-  <div class="section-tag">03 · Tokenization</div>
-  <div class="section-meta"><span>3 min read</span><span>beginner</span></div>
+  <div class="section-tag" data-i18n="tokens.tag">03 · Tokenization</div>
+  <div class="section-meta"><span data-i18n="meta.tokensRead">3 min read</span><span data-i18n="meta.beginner">beginner</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">Strings become <span class="accent">sequences.</span></h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="tokens.title">Strings become <span class="accent">sequences.</span></h2>
+      <p class="section-lede" data-i18n="tokens.lede">
         The model never sees letters, words, or punctuation. It sees integers.
         A <em>tokenizer</em> chops the input into chunks from a fixed vocabulary
         and looks each chunk up in an embedding table.
@@ -519,18 +524,18 @@
     <div class="token-flow">
       <div class="tf-step">
         <div class="tf-num">1</div>
-        <div class="tf-text">"Attention is all you need"</div>
+        <div class="tf-text" data-i18n="tokens.input">"Attention is all you need"</div>
       </div>
       <div class="tf-arrow">→</div>
       <div class="tf-step">
         <div class="tf-num">2</div>
         <div class="tf-tokens">
-          <span class="tok tok-attn">Atten</span>
-          <span class="tok tok-attn">tion</span>
-          <span class="tok">is</span>
-          <span class="tok tok-yellow">all</span>
-          <span class="tok">you</span>
-          <span class="tok">need</span>
+          <span class="tok tok-attn" data-i18n="tokens.t1">Atten</span>
+          <span class="tok tok-attn" data-i18n="tokens.t2">tion</span>
+          <span class="tok" data-i18n="tokens.t3">is</span>
+          <span class="tok tok-yellow" data-i18n="tokens.t4">all</span>
+          <span class="tok" data-i18n="tokens.t5">you</span>
+          <span class="tok" data-i18n="tokens.t6">need</span>
         </div>
       </div>
       <div class="tf-arrow">→</div>
@@ -547,7 +552,7 @@
       </div>
     </div>
 
-    <p class="caption">
+    <p class="caption" data-i18n="tokens.caption">
       Modern LLMs use <strong>Byte-Pair Encoding (BPE)</strong>: start with
       characters, repeatedly merge the most common adjacent pair into a new
       symbol. The result is a vocabulary of ~50k sub-word pieces that covers
@@ -556,16 +561,16 @@
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 5</div>
-  <h3 class="up-next-title">The heart: self-attention.</h3>
-  <p class="up-next-desc">Every token asks "who else here is relevant to me?" and rewrites itself from the answers.</p>
-  <a class="up-next-link" href="#attention">Continue → Attention</a>
+  <div class="up-next-eyebrow" data-i18n="up5.eyebrow">Up next · Section 5</div>
+  <h3 class="up-next-title" data-i18n="up5.title">The heart: self-attention.</h3>
+  <p class="up-next-desc" data-i18n="up5.desc">Every token asks "who else here is relevant to me?" and rewrites itself from the answers.</p>
+  <a class="up-next-link" href="#attention" data-i18n="up5.link">Continue → Attention</a>
 </div>
 </section>
 
 <!-- ATTENTION --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="attn.intuition">
     Imagine six people standing in a row, each holding a card with one word.
     Every person <b>looks at every other person</b> and decides how related
     they are. Then each person <b>rewrites their card</b> as a blend of
@@ -575,8 +580,8 @@
   </p>
 </div>
 <div class="confusion">
-  <p class="confusion-q">Isn't this just looking up the closest word?</p>
-  <p class="confusion-a">
+  <p class="confusion-q" data-i18n="attn.confQ">Isn't this just looking up the closest word?</p>
+  <p class="confusion-a" data-i18n="attn.confA">
     <b>No.</b> Attention doesn't pick one word &mdash; it takes a <em>weighted average</em>
     of all words. Every output is a mixture, not a lookup. The weights are
     smooth, fractional, and learned from data.
@@ -584,12 +589,12 @@
 </div>
 
 <section class="section section--accent" id="attention">
-  <div class="section-tag">04 · Self-Attention</div>
-  <div class="section-meta"><span>8 min read</span><span>core</span></div>
+  <div class="section-tag" data-i18n="attn.tag">04 · Self-Attention</div>
+  <div class="section-meta"><span data-i18n="meta.attnRead">8 min read</span><span data-i18n="meta.core">core</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">The heart of it all: <em>scaled dot-product attention.</em></h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="attn.title">The heart of it all: <em>scaled dot-product attention.</em></h2>
+      <p class="section-lede" data-i18n="attn.lede">
         Every token emits three vectors — a <span class="q-color">Query</span>,
         a <span class="k-color">Key</span>, and a <span class="v-color">Value</span>.
         A query asks a question. Every key says how well it answers. The values
@@ -598,21 +603,21 @@
     </div>
 
     <div class="formula-block">
-      <div class="formula-eyebrow">The formula</div>
+      <div class="formula-eyebrow" data-i18n="attn.formulaLabel">The formula</div>
       <div class="formula-main">$$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$</div>
       <div class="formula-foot">
-        <span><span class="dot dot-q"></span>Query — what I'm looking for</span>
-        <span><span class="dot dot-k"></span>Key — what I contain</span>
-        <span><span class="dot dot-v"></span>Value — what I actually contribute</span>
+        <span data-i18n="attn.footQ"><span class="dot dot-q"></span>Query — what I'm looking for</span>
+        <span data-i18n="attn.footK"><span class="dot dot-k"></span>Key — what I contain</span>
+        <span data-i18n="attn.footV"><span class="dot dot-v"></span>Value — what I actually contribute</span>
       </div>
     </div>
 
     <div class="qkv-section">
-      <h3 class="block-title">Step 1 · Project into Q, K, V</h3>
-      <p class="block-lede">Three learned linear projections turn each token's embedding into three roles.</p>
+      <h3 class="block-title" data-i18n="attn.step1Title">Step 1 · Project into Q, K, V</h3>
+      <p class="block-lede" data-i18n="attn.step1Lede">Three learned linear projections turn each token's embedding into three roles.</p>
       <div class="qkv">
         <div class="qkv-input">
-          <div class="qkv-label">X (n × d)</div>
+          <div class="qkv-label" data-i18n="attn.xLabel">X (n × d)</div>
           <div class="matrix">
             <div class="row"><i>x₁</i></div>
             <div class="row"><i>x₂</i></div>
@@ -634,37 +639,37 @@
     </div>
 
     <div class="score-section">
-      <h3 class="block-title">Step 2 · Score every pair: <code>QKᵀ</code></h3>
-      <p class="block-lede">For each query position, compute a dot product with every key position. Large dot product → those tokens are related.</p>
+      <h3 class="block-title" data-i18n="attn.step2Title">Step 2 · Score every pair: <code>QKᵀ</code></h3>
+      <p class="block-lede" data-i18n="attn.step2Lede">For each query position, compute a dot product with every key position. Large dot product → those tokens are related.</p>
       <div class="heatmap" id="scoreHeatmap"></div>
     </div>
 
     <div class="softmax-section">
-      <h3 class="block-title">Step 3 · Scale by √d<sub>k</sub>, then softmax</h3>
-      <p class="block-lede">Dividing by √d<sub>k</sub> keeps gradients well-behaved when d<sub>k</sub> is large. Softmax turns scores into a probability distribution over keys.</p>
+      <h3 class="block-title" data-i18n="attn.step3Title">Step 3 · Scale by √d<sub>k</sub>, then softmax</h3>
+      <p class="block-lede" data-i18n="attn.step3Lede">Dividing by √d<sub>k</sub> keeps gradients well-behaved when d<sub>k</sub> is large. Softmax turns scores into a probability distribution over keys.</p>
       <div class="softmax-eq">
-        <span class="se-row">scores = QKᵀ</span>
-        <span class="se-row">scaled = scores / √d<sub>k</sub></span>
-        <span class="se-row">weights = softmax(scaled)</span>
-        <span class="se-row">output = weights · V</span>
+        <span class="se-row" data-i18n="attn.se1">scores = QKᵀ</span>
+        <span class="se-row" data-i18n="attn.se2">scaled = scores / √d<sub>k</sub></span>
+        <span class="se-row" data-i18n="attn.se3">weights = softmax(scaled)</span>
+        <span class="se-row" data-i18n="attn.se4">output = weights · V</span>
       </div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 6</div>
-  <h3 class="up-next-title">Touch it yourself.</h3>
-  <p class="up-next-desc">Play with a live attention mechanism in your browser. Click any token to see where it "looks."</p>
-  <a class="up-next-link" href="#playground">Continue → Playground</a>
+  <div class="up-next-eyebrow" data-i18n="up6.eyebrow">Up next · Section 6</div>
+  <h3 class="up-next-title" data-i18n="up6.title">Touch it yourself.</h3>
+  <p class="up-next-desc" data-i18n="up6.desc">Play with a live attention mechanism in your browser. Click any token to see where it "looks."</p>
+  <a class="up-next-link" href="#playground" data-i18n="up6.link">Continue → Playground</a>
 </div>
 </section>
 
 <!-- PLAYGROUND -->
 <section class="section section--dark" id="playground">
-  <div class="section-tag">05 · Playground</div>
-  <div class="section-meta"><span>5 min read</span><span>hands-on</span></div>
-  <h2 class="section-title section-title--center">Touch the <em>softmax.</em></h2>
-  <p class="section-lede section-lede--center">
+  <div class="section-tag" data-i18n="pg.tag">05 · Playground</div>
+  <div class="section-meta"><span data-i18n="meta.pgRead">5 min read</span><span data-i18n="meta.handson">hands-on</span></div>
+  <h2 class="section-title section-title--center" data-i18n="pg.title">Touch the <em>softmax.</em></h2>
+  <p class="section-lede section-lede--center" data-i18n="pg.lede">
     A toy attention mechanism, running live in your browser. Type a sentence,
     watch it tokenize, then click any token to see where it "looks." Same
     algorithm — just smaller.
@@ -672,14 +677,14 @@
 
   <div class="playground">
     <div class="pg-controls">
-      <label class="pg-label">Sentence</label>
+      <label class="pg-label" data-i18n="pg.sentence">Sentence</label>
       <input type="text" id="pgInput" class="pg-input" value="the cat sat on the mat" />
-      <div class="pg-help">Try:
+      <div class="pg-help" data-i18n="pg.try">Try:
         <button class="pg-chip" data-t="the cat sat on the mat">"the cat sat on the mat"</button>
         <button class="pg-chip" data-t="a king and a queen in a kingdom">"a king and a queen…"</button>
         <button class="pg-chip" data-t="she poured coffee into the cup">"she poured coffee…"</button>
       </div>
-      <div class="pg-meta" id="pgMeta">d_model=8 · d_k=4 · 1 head · deterministic seed</div>
+      <div class="pg-meta" id="pgMeta" data-i18n="pg.meta">d_model=8 · d_k=4 · 1 head · deterministic seed</div>
     </div>
 
     <div class="pg-stage">
@@ -692,29 +697,29 @@
       </div>
       <div class="pg-arrow">↓</div>
       <div class="pg-heatmap-wrap">
-        <div class="pg-heatmap-title">Attention weights · click a row</div>
+        <div class="pg-heatmap-title" data-i18n="pg.heatTitle">Attention weights · click a row</div>
         <div class="pg-heatmap" id="pgHeatmap"></div>
-        <div class="pg-legend">darker = stronger attention</div>
+        <div class="pg-legend" data-i18n="pg.legend">darker = stronger attention</div>
       </div>
       <div class="pg-arrow">↓</div>
       <div class="pg-output-wrap">
-        <div class="pg-output-title">Output for selected token</div>
+        <div class="pg-output-title" data-i18n="pg.outTitle">Output for selected token</div>
         <div class="pg-output" id="pgOutput">—</div>
       </div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 7</div>
-  <h3 class="up-next-title">Many heads, many insights.</h3>
-  <p class="up-next-desc">Eight attentions in parallel, on smaller slices. Each one learns to track something different.</p>
-  <a class="up-next-link" href="#multihead">Continue → Multihead</a>
+  <div class="up-next-eyebrow" data-i18n="up7.eyebrow">Up next · Section 7</div>
+  <h3 class="up-next-title" data-i18n="up7.title">Many heads, many insights.</h3>
+  <p class="up-next-desc" data-i18n="up7.desc">Eight attentions in parallel, on smaller slices. Each one learns to track something different.</p>
+  <a class="up-next-link" href="#multihead" data-i18n="up7.link">Continue → Multihead</a>
 </div>
 </section>
 
 <!-- MULTI-HEAD --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="mh.intuition">
     Imagine <b>eight experts</b> in a meeting, all reading the same sentence.
     One tracks who-does-what. One tracks which pronouns refer to whom. One
     just looks at the word right before. Each writes their own notes, then
@@ -724,12 +729,12 @@
 </div>
 
 <section class="section" id="multihead">
-  <div class="section-tag">06 · Multi-Head Attention</div>
-  <div class="section-meta"><span>4 min read</span><span>core</span></div>
+  <div class="section-tag" data-i18n="mh.tag">06 · Multi-Head Attention</div>
+  <div class="section-meta"><span data-i18n="meta.mhRead">4 min read</span><span data-i18n="meta.core">core</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">Many heads <span class="accent">see different things.</span></h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="mh.title">Many heads <span class="accent">see different things.</span></h2>
+      <p class="section-lede" data-i18n="mh.lede">
         Instead of one big attention, we run <em>h</em> attentions in parallel
         on smaller slices of the embedding, then concatenate. Different heads
         specialize: one tracks syntax, another tracks coreference, another
@@ -740,23 +745,23 @@
     <div class="heads-grid" id="headsGrid"></div>
 
     <div class="formula-block formula-block--small">
-      <div class="formula-eyebrow">Multi-head formulation</div>
+      <div class="formula-eyebrow" data-i18n="mh.formulaLabel">Multi-head formulation</div>
       <div class="formula-main">$$\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1,\dots,\text{head}_h)\,W^O$$
 $$\text{head}_i = \text{Attention}(QW_i^Q,\, KW_i^K,\, VW_i^V)$$</div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 8</div>
-  <h3 class="up-next-title">Where am I in the sentence?</h3>
-  <p class="up-next-desc">Attention is a bag of words. Positional encoding gives every position a unique fingerprint.</p>
-  <a class="up-next-link" href="#positions">Continue → Positions</a>
+  <div class="up-next-eyebrow" data-i18n="up8.eyebrow">Up next · Section 8</div>
+  <h3 class="up-next-title" data-i18n="up8.title">Where am I in the sentence?</h3>
+  <p class="up-next-desc" data-i18n="up8.desc">Attention is a bag of words. Positional encoding gives every position a unique fingerprint.</p>
+  <a class="up-next-link" href="#positions" data-i18n="up8.link">Continue → Positions</a>
 </div>
 </section>
 
 <!-- POSITIONAL --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="pos.intuition">
     Attention treats a sentence like a <b>bag of words</b> &mdash; it sees
     "cat sat mat on the" exactly the same as "mat sat cat on the". To fix
     that, we <b>add a position tag</b> to every word. Think of it like
@@ -767,8 +772,8 @@ $$\text{head}_i = \text{Attention}(QW_i^Q,\, KW_i^K,\, VW_i^V)$$</div>
   </p>
 </div>
 <div class="confusion">
-  <p class="confusion-q">Why not just say "this is word number 5"?</p>
-  <p class="confusion-a">
+  <p class="confusion-q" data-i18n="pos.confQ">Why not just say "this is word number 5"?</p>
+  <p class="confusion-a" data-i18n="pos.confA">
     Because plain numbers don't generalize: a model trained on sentences of
     length 20 has no idea what to do with a 100-word sentence. Sinusoidal
     (and rotary) embeddings give every position a <b>unique fingerprint</b>
@@ -778,12 +783,12 @@ $$\text{head}_i = \text{Attention}(QW_i^Q,\, KW_i^K,\, VW_i^V)$$</div>
 </div>
 
 <section class="section section--dark" id="positions">
-  <div class="section-tag">07 · Positional Encoding</div>
-  <div class="section-meta"><span>4 min read</span><span>core</span></div>
+  <div class="section-tag" data-i18n="pos.tag">07 · Positional Encoding</div>
+  <div class="section-meta"><span data-i18n="meta.posRead">4 min read</span><span data-i18n="meta.core">core</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">Where <em>are</em> you in the sequence?</h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="pos.title">Where <em>are</em> you in the sequence?</h2>
+      <p class="section-lede" data-i18n="pos.lede">
         Attention is permutation-equivariant: shuffle the inputs and the
         outputs shuffle the same way. That's a feature <em>and</em> a bug —
         language has order. We fix it by <strong>adding</strong> a deterministic
@@ -792,10 +797,10 @@ $$\text{head}_i = \text{Attention}(QW_i^Q,\, KW_i^K,\, VW_i^V)$$</div>
     </div>
 
     <div class="formula-block formula-block--small">
-      <div class="formula-eyebrow">Sinusoidal (original paper)</div>
+      <div class="formula-eyebrow" data-i18n="pos.formulaLabel">Sinusoidal (original paper)</div>
       <div class="formula-main">$$PE_{(pos,\,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d}}\right) \quad\quad
 PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
-      <div class="formula-foot">
+      <div class="formula-foot" data-i18n="pos.formulaFoot">
         Each dimension is a sine at a different frequency. The model can
         recover the offset between any two positions via a linear
         combination — and unseen lengths extrapolate gracefully.
@@ -807,9 +812,9 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
         <g id="posHeat"></g>
       </svg>
       <div class="pos-axis">
-        <span>position 0</span><span>·</span><span>·</span><span>·</span><span>position 100</span>
+        <span data-i18n="pos.axis0">position 0</span><span>·</span><span>·</span><span>·</span><span data-i18n="pos.axis100">position 100</span>
       </div>
-      <p class="caption">
+      <p class="caption" data-i18n="pos.caption">
         Modern transformers (GPT, LLaMA) use <strong>rotary positional
         embeddings (RoPE)</strong> — rotate Q and K by a position-dependent
         angle, so attention scores naturally depend on relative distance.
@@ -818,20 +823,20 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 9</div>
-  <h3 class="up-next-title">The quiet half.</h3>
-  <p class="up-next-desc">After attention mixes information across positions, the FFN thinks privately for each one.</p>
-  <a class="up-next-link" href="#ffn">Continue → Ffn</a>
+  <div class="up-next-eyebrow" data-i18n="up9.eyebrow">Up next · Section 9</div>
+  <h3 class="up-next-title" data-i18n="up9.title">The quiet half.</h3>
+  <p class="up-next-desc" data-i18n="up9.desc">After attention mixes information across positions, the FFN thinks privately for each one.</p>
+  <a class="up-next-link" href="#ffn" data-i18n="up9.link">Continue → Ffn</a>
 </div>
 </section>
 
 <!-- FFN -->
 <section class="section" id="ffn">
-  <div class="section-tag">08 · Feed-Forward</div>
+  <div class="section-tag" data-i18n="ffn.tag">08 · Feed-Forward</div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">The <em>quiet</em> half of the block.</h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="ffn.title">The <em>quiet</em> half of the block.</h2>
+      <p class="section-lede" data-i18n="ffn.lede">
         After attention mixes information <em>across positions</em>, the
         feed-forward network mixes information <em>within each position</em>.
         It's just two linear layers with a non-linearity between them —
@@ -843,15 +848,15 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
       <div class="ffn-token">x</div>
       <div class="ffn-arrow">→</div>
       <div class="ffn-layer">
-        <div class="ffn-box">Linear<span class="ffn-dim">d → 4d</span></div>
-        <div class="ffn-box">ReLU<span class="ffn-dim">max(0, ·)</span></div>
-        <div class="ffn-box">Linear<span class="ffn-dim">4d → d</span></div>
+        <div class="ffn-box" data-i18n="ffn.linear1">Linear<span class="ffn-dim">d → 4d</span></div>
+        <div class="ffn-box" data-i18n="ffn.relu">ReLU<span class="ffn-dim">max(0, ·)</span></div>
+        <div class="ffn-box" data-i18n="ffn.linear2">Linear<span class="ffn-dim">4d → d</span></div>
       </div>
       <div class="ffn-arrow">→</div>
       <div class="ffn-token">y</div>
     </div>
 
-    <div class="callout">
+    <div class="callout" data-i18n="ffn.callout">
       <strong>Two-thirds of the parameters live here.</strong>
       In a standard Transformer block, the FFN is where the model stores most
       of its "factual" knowledge — attention routes information, the FFN
@@ -861,8 +866,8 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
 </section>
 
 <!-- RESIDUAL + LAYERNORM --><div class="intuition">
-  <span class="intuition-tag">In plain English</span>
-  <p class="intuition-text">
+  <span class="intuition-tag" data-i18n="intuition.tag">In plain English</span>
+  <p class="intuition-text" data-i18n="res.intuition">
     Every time the model rewrites a word, it <b>keeps a copy of the
     original</b> and adds the changes on top &mdash; like saving your work
     in a video game. This way, if a layer doesn't know what to do, it can
@@ -872,8 +877,8 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
   </p>
 </div>
 <div class="confusion">
-  <p class="confusion-q">Why does adding the input back help?</p>
-  <p class="confusion-a">
+  <p class="confusion-q" data-i18n="res.confQ">Why does adding the input back help?</p>
+  <p class="confusion-a" data-i18n="res.confA">
     Two reasons. <b>Training:</b> gradients can flow straight through the
     skip connection without getting smaller &mdash; essential when you have
     96 layers stacked. <b>Meaning:</b> the sub-layer only has to learn the
@@ -883,12 +888,12 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
 </div>
 
 <section class="section section--dark" id="residual">
-  <div class="section-tag">09 · Residual + LayerNorm</div>
-  <div class="section-meta"><span>3 min read</span><span>core</span></div>
+  <div class="section-tag" data-i18n="res.tag">09 · Residual + LayerNorm</div>
+  <div class="section-meta"><span data-i18n="meta.resRead">3 min read</span><span data-i18n="meta.core">core</span></div>
   <div class="section-grid">
     <div class="section-head">
-      <h2 class="section-title">Skip <em>across</em>, normalize <em>within.</em></h2>
-      <p class="section-lede">
+      <h2 class="section-title" data-i18n="res.title">Skip <em>across</em>, normalize <em>within.</em></h2>
+      <p class="section-lede" data-i18n="res.lede">
         Every sub-layer is wrapped in a residual connection and a layer
         normalization. Residuals let gradients flow backward through deep
         stacks without vanishing; LayerNorm keeps activations on a sane
@@ -899,84 +904,84 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="residual-vis">
       <div class="rv-line"></div>
       <div class="rv-block">
-        <div class="rv-input">x</div>
+        <div class="rv-input" data-i18n="res.x">x</div>
         <div class="rv-arrow">→</div>
-        <div class="rv-fn">Sublayer(x)</div>
+        <div class="rv-fn" data-i18n="res.sublayer">Sublayer(x)</div>
         <div class="rv-arrow">→</div>
-        <div class="rv-add">+ x</div>
+        <div class="rv-add" data-i18n="res.plusX">+ x</div>
         <div class="rv-arrow">→</div>
-        <div class="rv-ln">LayerNorm</div>
+        <div class="rv-ln" data-i18n="res.layernorm">LayerNorm</div>
         <div class="rv-arrow">→</div>
-        <div class="rv-output">out</div>
+        <div class="rv-output" data-i18n="res.out">out</div>
       </div>
       <div class="rv-line rv-line--skip"></div>
     </div>
 
     <div class="formula-block formula-block--small">
-      <div class="formula-eyebrow">The two equations of every sub-layer</div>
+      <div class="formula-eyebrow" data-i18n="res.formulaLabel">The two equations of every sub-layer</div>
       <div class="formula-main">$$\text{output} = \text{LayerNorm}(x + \text{Sublayer}(x))$$</div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 11</div>
-  <h3 class="up-next-title">Three flavors of model.</h3>
-  <p class="up-next-desc">Encoder, decoder, or both? Each architecture has different strengths.</p>
-  <a class="up-next-link" href="#split">Continue → Split</a>
+  <div class="up-next-eyebrow" data-i18n="up10.eyebrow">Up next · Section 11</div>
+  <h3 class="up-next-title" data-i18n="up10.title">Three flavors of model.</h3>
+  <p class="up-next-desc" data-i18n="up10.desc">Encoder, decoder, or both? Each architecture has different strengths.</p>
+  <a class="up-next-link" href="#split" data-i18n="up10.link">Continue → Split</a>
 </div>
 </section>
 
 <!-- ENCODER vs DECODER -->
 <section class="section" id="split">
-  <div class="section-tag">10 · Encoder vs. Decoder</div>
+  <div class="section-tag" data-i18n="split.tag">10 · Encoder vs. Decoder</div>
   <div class="section-meta"><span>4 min read</span><span>core</span></div>
   <div class="split-grid">
     <div class="split-card">
       <header>
-        <span class="split-tag">Encoder</span>
-        <h3>Reads the whole input, both directions.</h3>
+        <span class="split-tag" data-i18n="split.enc">Encoder</span>
+        <h3 data-i18n="split.encTitle">Reads the whole input, both directions.</h3>
       </header>
-      <p>Bidirectional self-attention. Each token sees every other token in
+      <p data-i18n="split.encBody">Bidirectional self-attention. Each token sees every other token in
         the same sequence. Best for understanding tasks: classification,
         embeddings, span prediction.</p>
-      <div class="split-rep">BERT · RoBERTa · Sentence Transformers</div>
+      <div class="split-rep" data-i18n="split.encRep">BERT · RoBERTa · Sentence Transformers</div>
     </div>
     <div class="split-card split-card--right">
       <header>
-        <span class="split-tag split-tag--right">Decoder</span>
-        <h3>Writes one token at a time, looking back.</h3>
+        <span class="split-tag split-tag--right" data-i18n="split.dec">Decoder</span>
+        <h3 data-i18n="split.decTitle">Writes one token at a time, looking back.</h3>
       </header>
-      <p>Masked self-attention. Position <i>i</i> can only attend to positions
+      <p data-i18n="split.decBody">Masked self-attention. Position <i>i</i> can only attend to positions
         ≤ <i>i</i>. Add cross-attention layers that pull K, V from the
         encoder. Best for generation: translation, chat, code.</p>
-      <div class="split-rep">GPT · LLaMA · Claude · Mistral</div>
+      <div class="split-rep" data-i18n="split.decRep">GPT · LLaMA · Claude · Mistral</div>
     </div>
     <div class="split-card split-card--bottom">
       <header>
-        <span class="split-tag split-tag--bot">Encoder–Decoder</span>
-        <h3>Translate, summarize, infill.</h3>
+        <span class="split-tag split-tag--bot" data-i18n="split.both">Encoder–Decoder</span>
+        <h3 data-i18n="split.bothTitle">Translate, summarize, infill.</h3>
       </header>
-      <p>Full original Transformer. The encoder builds a representation of
+      <p data-i18n="split.bothBody">Full original Transformer. The encoder builds a representation of
         the source; the decoder generates the target one token at a time,
         cross-attending to the source at every step.</p>
-      <div class="split-rep">T5 · BART · FLAN-T5 · Whisper</div>
+      <div class="split-rep" data-i18n="split.bothRep">T5 · BART · FLAN-T5 · Whisper</div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 12</div>
-  <h3 class="up-next-title">See one sentence, end to end.</h3>
-  <p class="up-next-desc">Walk through "The cat sat." with actual numbers at every step — tokenize, embed, project, attend.</p>
-  <a class="up-next-link" href="#worked">Continue → Worked</a>
+  <div class="up-next-eyebrow" data-i18n="up11.eyebrow">Up next · Section 12</div>
+  <h3 class="up-next-title" data-i18n="up11.title">See one sentence, end to end.</h3>
+  <p class="up-next-desc" data-i18n="up11.desc">Walk through "The cat sat." with actual numbers at every step — tokenize, embed, project, attend.</p>
+  <a class="up-next-link" href="#worked" data-i18n="up11.link">Continue → Worked</a>
 </div>
 </section>
 
 <!-- WORKED EXAMPLE -->
 <section class="section" id="worked">
-  <div class="section-tag">11 · A Worked Example</div>
-  <div class="section-meta"><span>8 min read</span><span>hands-on</span></div>
-  <h2 class="section-title section-title--center">Let's trace <em>one sentence,</em> step by step.</h2>
-  <p class="section-lede section-lede--center">
+  <div class="section-tag" data-i18n="worked.tag">11 · A Worked Example</div>
+  <div class="section-meta"><span data-i18n="meta.workedRead">8 min read</span><span data-i18n="meta.handson">hands-on</span></div>
+  <h2 class="section-title section-title--center" data-i18n="worked.title">Let's trace <em>one sentence,</em> step by step.</h2>
+  <p class="section-lede section-lede--center" data-i18n="worked.lede">
     Take the sentence &ldquo;The cat sat.&rdquo; and follow it through every
     stage of the model &mdash; with actual numbers at each step. To keep the
     arithmetic visible, we'll pretend <code>d<sub>model</sub>&nbsp;=&nbsp;4</code>
@@ -987,14 +992,14 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">1</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Tokenize the sentence</h3>
-        <p class="worked-step-desc">A tokenizer chops the input into pieces from a fixed vocabulary (about 50,000 entries). Common words are one piece; rare ones are split.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s1Title">Tokenize the sentence</h3>
+        <p class="worked-step-desc" data-i18n="worked.s1Desc">A tokenizer chops the input into pieces from a fixed vocabulary (about 50,000 entries). Common words are one piece; rare ones are split.</p>
         <div class="worked-step-numbers">
 <span class="ws-out">&ldquo;The cat sat.&rdquo;</span>
 <span class="ws-arrow">→</span>
 <span class="ws-tok">The</span><span class="ws-tok">cat</span><span class="ws-tok">sat</span><span class="ws-tok">.</span>
 <br><br>
-<span class="ws-cap">Each piece becomes an integer ID from the vocabulary:</span>
+<span class="ws-cap" data-i18n="worked.s1Cap">Each piece becomes an integer ID from the vocabulary:</span>
 <br>
 <span class="ws-id">101</span><span class="ws-id">2,371</span><span class="ws-id">1,423</span><span class="ws-id">13</span>
         </div>
@@ -1004,8 +1009,8 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">2</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Look up an embedding for each token</h3>
-        <p class="worked-step-desc">Every token ID maps to a learned vector &mdash; a row in a giant table. The vector is what &ldquo;means&rdquo; looks like to the model.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s2Title">Look up an embedding for each token</h3>
+        <p class="worked-step-desc" data-i18n="worked.s2Desc">Every token ID maps to a learned vector &mdash; a row in a giant table. The vector is what &ldquo;means&rdquo; looks like to the model.</p>
         <div class="worked-step-numbers">
 <span class="ws-row"><span class="ws-tk">The</span>  →  [ <b>+0.20</b>,  <b>+0.80</b>,  <b>&minus;0.50</b>,  <b>+0.30</b> ]</span>
 <span class="ws-row"><span class="ws-tk">cat</span>  →  [ <b>&minus;0.40</b>,  <b>+0.90</b>,  <b>+0.10</b>,  <b>&minus;0.20</b> ]</span>
@@ -1018,13 +1023,13 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">3</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Add position information</h3>
-        <p class="worked-step-desc">Without this step the model can't tell &ldquo;cat sat mat&rdquo; from &ldquo;mat sat cat&rdquo;. We add a unique fingerprint for each position.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s3Title">Add position information</h3>
+        <p class="worked-step-desc" data-i18n="worked.s3Desc">Without this step the model can't tell &ldquo;cat sat mat&rdquo; from &ldquo;mat sat cat&rdquo;. We add a unique fingerprint for each position.</p>
         <div class="worked-step-numbers">
-<span class="ws-row"><span class="ws-cap">Position 1:</span>  [ 0.00,  +0.10,  0.00,  +0.10 ]</span>
-<span class="ws-row"><span class="ws-cap">Position 2:</span>  [ 0.00,  +0.20,  0.00,  +0.20 ]</span>
-<span class="ws-row"><span class="ws-cap">Position 3:</span>  [ 0.00,  +0.30,  0.00,  +0.30 ]</span>
-<span class="ws-row"><span class="ws-cap">Position 4:</span>  [ 0.00,  +0.40,  0.00,  +0.40 ]</span>
+<span class="ws-row"><span class="ws-cap" data-i18n="worked.pos1">Position 1:</span>  [ 0.00,  +0.10,  0.00,  +0.10 ]</span>
+<span class="ws-row"><span class="ws-cap" data-i18n="worked.pos2">Position 2:</span>  [ 0.00,  +0.20,  0.00,  +0.20 ]</span>
+<span class="ws-row"><span class="ws-cap" data-i18n="worked.pos3">Position 3:</span>  [ 0.00,  +0.30,  0.00,  +0.30 ]</span>
+<span class="ws-row"><span class="ws-cap" data-i18n="worked.pos4">Position 4:</span>  [ 0.00,  +0.40,  0.00,  +0.40 ]</span>
 <br>
 <span class="ws-row ws-row--sum"><span class="ws-tk ws-tk--q">The</span> + pos1  =  [ <b>+0.20</b>,  <b>+0.90</b>,  <b>&minus;0.50</b>,  <b>+0.40</b> ]</span>
         </div>
@@ -1034,8 +1039,8 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">4</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Project each token into Q, K, and V</h3>
-        <p class="worked-step-desc">Three learned matrices (<code>W<sub>Q</sub></code>, <code>W<sub>K</sub></code>, <code>W<sub>V</sub></code>) turn each token's vector into three smaller &ldquo;voices&rdquo;. Each is <code>d<sub>k</sub>&nbsp;=&nbsp;2</code> numbers long.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s4Title">Project each token into Q, K, and V</h3>
+        <p class="worked-step-desc" data-i18n="worked.s4Desc">Three learned matrices (<code>W<sub>Q</sub></code>, <code>W<sub>K</sub></code>, <code>W<sub>V</sub></code>) turn each token's vector into three smaller &ldquo;voices&rdquo;. Each is <code>d<sub>k</sub>&nbsp;=&nbsp;2</code> numbers long.</p>
         <div class="worked-step-numbers">
 <span class="ws-row ws-row--q"><b>Q(The)</b>  =  [ +0.20,  +0.90 ]</span>
 <span class="ws-row ws-row--q"><b>Q(cat)</b>  =  [&minus;0.40,  +0.90 ]</span>
@@ -1050,10 +1055,10 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">5</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Score every pair: Q &middot; Kᵀ</h3>
-        <p class="worked-step-desc">For each query position <em>i</em>, dot-product with every key position <em>j</em>. Big dot product &rarr; those tokens are related.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s5Title">Score every pair: Q &middot; Kᵀ</h3>
+        <p class="worked-step-desc" data-i18n="worked.s5Desc">For each query position <em>i</em>, dot-product with every key position <em>j</em>. Big dot product &rarr; those tokens are related.</p>
         <div class="worked-step-numbers">
-<span class="ws-cap">Example: how related is <span class="ws-tk ws-tk--q">cat</span> to each token?</span>
+<span class="ws-cap" data-i18n="worked.s5Cap">Example: how related is <span class="ws-tk ws-tk--q">cat</span> to each token?</span>
 <br><br>
 <span class="ws-row">score(cat, The)  =  (&minus;0.40)(&minus;0.50) + (+0.90)(+0.40)  =  <b>+0.56</b></span>
 <span class="ws-row">score(cat, cat)  =  (&minus;0.40)(+0.10) + (+0.90)(&minus;0.20)  =  <b>&minus;0.22</b></span>
@@ -1067,15 +1072,15 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">6</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Softmax turns scores into weights</h3>
-        <p class="worked-step-desc">Softmax squashes the three numbers so they sum to 1 and every weight is non-negative. Now they are <em>probabilities</em> over positions.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s6Title">Softmax turns scores into weights</h3>
+        <p class="worked-step-desc" data-i18n="worked.s6Desc">Softmax squashes the three numbers so they sum to 1 and every weight is non-negative. Now they are <em>probabilities</em> over positions.</p>
         <div class="worked-step-numbers">
-<span class="ws-row ws-row--sum">raw:    [ +0.40,  &minus;0.16,  &minus;0.06 ]</span>
-<span class="ws-row ws-row--sum">exp:    [  1.49,    0.85,    0.94 ]</span>
-<span class="ws-row ws-row--sum">sum:    3.28</span>
+<span class="ws-row ws-row--sum" data-i18n="worked.raw">raw:    [ +0.40,  &minus;0.16,  &minus;0.06 ]</span>
+<span class="ws-row ws-row--sum" data-i18n="worked.exp">exp:    [  1.49,    0.85,    0.94 ]</span>
+<span class="ws-row ws-row--sum" data-i18n="worked.sum">sum:    3.28</span>
 <span class="ws-row ws-row--sum ws-row--katex"><b>weights:&nbsp;&nbsp;[ 0.45,  0.26,  0.29 ]</b></span>
 <br>
-<span class="ws-cap">Read aloud: when thinking about &ldquo;cat&rdquo;, pay 45% attention to &ldquo;The&rdquo;, 26% to &ldquo;cat&rdquo;, 29% to &ldquo;sat&rdquo;.</span>
+<span class="ws-cap" data-i18n="worked.s6Cap">Read aloud: when thinking about &ldquo;cat&rdquo;, pay 45% attention to &ldquo;The&rdquo;, 26% to &ldquo;cat&rdquo;, 29% to &ldquo;sat&rdquo;.</span>
         </div>
       </div>
     </div>
@@ -1083,12 +1088,12 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step">
       <div class="worked-step-num">7</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Weighted sum of values &mdash; done</h3>
-        <p class="worked-step-desc">Multiply each token's value vector by its weight and add them up. The result is the new representation of &ldquo;cat&rdquo; &mdash; now informed by its neighbors.</p>
+        <h3 class="worked-step-title" data-i18n="worked.s7Title">Weighted sum of values &mdash; done</h3>
+        <p class="worked-step-desc" data-i18n="worked.s7Desc">Multiply each token's value vector by its weight and add them up. The result is the new representation of &ldquo;cat&rdquo; &mdash; now informed by its neighbors.</p>
         <div class="worked-step-numbers">
-<span class="ws-row ws-row--v">output(cat)  =  0.45 · V(The)  +  0.26 · V(cat)  +  0.29 · V(sat)</span>
-<span class="ws-row ws-row--v">            =  0.45·[+1.00,&minus;0.20]  +  0.26·[+0.50,&minus;0.10]  +  0.29·[+0.90,+0.50]</span>
-<span class="ws-row ws-row--sum ws-row--katex"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=  [ +0.86,  +0.06 ]</b></span>
+<span class="ws-row ws-row--v" data-i18n="worked.outRow">output(cat)  =  0.45 · V(The)  +  0.26 · V(cat)  +  0.29 · V(sat)</span>
+<span class="ws-row ws-row--v" data-i18n="worked.outRow2">            =  0.45·[+1.00,&minus;0.20]  +  0.26·[+0.50,&minus;0.10]  +  0.29·[+0.90,+0.50]</span>
+<span class="ws-row ws-row--sum ws-row--katex" data-i18n="worked.outRow3"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=  [ +0.86,  +0.06 ]</b></span>
         </div>
       </div>
     </div>
@@ -1096,28 +1101,28 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
     <div class="worked-step worked-step--end">
       <div class="worked-step-num">↻</div>
       <div class="worked-step-body">
-        <h3 class="worked-step-title">Now do this <em>n</em> times</h3>
-        <p class="worked-step-desc">In a real model this whole pipeline runs <b>6 to 96 times</b>, with fresh Q/K/V matrices each round. After all those rounds, each token's vector encodes information from the entire sentence &mdash; and that rich representation is what the model uses to predict the next word, classify a sentence, translate, or anything else.</p>
-        <p class="worked-step-desc" style="margin-top: 14px;"><b>You just walked through the entire Transformer.</b></p>
+        <h3 class="worked-step-title" data-i18n="worked.s8Title">Now do this <em>n</em> times</h3>
+        <p class="worked-step-desc" data-i18n="worked.s8Desc">In a real model this whole pipeline runs <b>6 to 96 times</b>, with fresh Q/K/V matrices each round. After all those rounds, each token's vector encodes information from the entire sentence &mdash; and that rich representation is what the model uses to predict the next word, classify a sentence, translate, or anything else.</p>
+        <p class="worked-step-desc" style="margin-top: 14px;" data-i18n="worked.s8End"><b>You just walked through the entire Transformer.</b></p>
       </div>
     </div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 13</div>
-  <h3 class="up-next-title">Read the real code.</h3>
-  <p class="up-next-desc">Strip away everything else and a Transformer block is just 60 lines of PyTorch. Here they are.</p>
-  <a class="up-next-link" href="#code">Continue → Code</a>
+  <div class="up-next-eyebrow" data-i18n="up12.eyebrow">Up next · Section 13</div>
+  <h3 class="up-next-title" data-i18n="up12.title">Read the real code.</h3>
+  <p class="up-next-desc" data-i18n="up12.desc">Strip away everything else and a Transformer block is just 60 lines of PyTorch. Here they are.</p>
+  <a class="up-next-link" href="#code" data-i18n="up12.link">Continue → Code</a>
 </div>
 </section>
 
 
 <!-- CODE -->
 <section class="section section--dark" id="code">
-  <div class="section-tag">12 · The Code</div>
-  <div class="section-meta"><span>6 min read</span><span>hands-on</span></div>
-  <h2 class="section-title section-title--center">A working attention, in <em>60 lines.</em></h2>
-  <p class="section-lede section-lede--center">
+  <div class="section-tag" data-i18n="code.tag">12 · The Code</div>
+  <div class="section-meta"><span data-i18n="meta.workedRead2">6 min read</span><span data-i18n="meta.handson">hands-on</span></div>
+  <h2 class="section-title section-title--center" data-i18n="code.title">A working attention, in <em>60 lines.</em></h2>
+  <p class="section-lede section-lede--center" data-i18n="code.lede">
     Strip everything else away and this is all a Transformer layer really is.
     PyTorch, no framework magic, every line annotated.
   </p>
@@ -1128,156 +1133,156 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 14</div>
-  <h3 class="up-next-title">One paper, a thousand descendants.</h3>
-  <p class="up-next-desc">GPT, BERT, T5, LLaMA, MoE — every modern model is a riff on the same recipe.</p>
-  <a class="up-next-link" href="#variants">Continue → Variants</a>
+  <div class="up-next-eyebrow" data-i18n="up13.eyebrow">Up next · Section 14</div>
+  <h3 class="up-next-title" data-i18n="up13.title">One paper, a thousand descendants.</h3>
+  <p class="up-next-desc" data-i18n="up13.desc">GPT, BERT, T5, LLaMA, MoE — every modern model is a riff on the same recipe.</p>
+  <a class="up-next-link" href="#variants" data-i18n="up13.link">Continue → Variants</a>
 </div>
 </section>
 
 <!-- VARIANTS -->
 <section class="section" id="variants">
-  <div class="section-tag">13 · Modern Variants</div>
-  <div class="section-meta"><span>5 min read</span><span>reference</span></div>
-  <h2 class="section-title section-title--center">One paper, <em>a thousand descendants.</em></h2>
+  <div class="section-tag" data-i18n="var.tag">13 · Modern Variants</div>
+  <div class="section-meta"><span data-i18n="meta.varRead">5 min read</span><span data-i18n="meta.reference">reference</span></div>
+  <h2 class="section-title section-title--center" data-i18n="var.title">One paper, <em>a thousand descendants.</em></h2>
 
   <div class="variants-grid">
     <article class="variant">
-      <header><span class="var-year">2018</span><h3>GPT</h3><span class="var-by">OpenAI</span></header>
-      <p>Decoder-only. Predict the next token over a huge corpus. The recipe
+      <header><span class="var-year">2018</span><h3 data-i18n="var.gptTitle">GPT</h3><span class="var-by" data-i18n="var.gptBy">OpenAI</span></header>
+      <p data-i18n="var.gptBody">Decoder-only. Predict the next token over a huge corpus. The recipe
       that scales. Now powering most "AI assistants" you talk to.</p>
-      <div class="var-stats"><span>Decoder-only</span><span>Autoregressive</span></div>
+      <div class="var-stats"><span data-i18n="var.gptStat1">Decoder-only</span><span data-i18n="var.gptStat2">Autoregressive</span></div>
     </article>
     <article class="variant">
-      <header><span class="var-year">2018</span><h3>BERT</h3><span class="var-by">Google</span></header>
-      <p>Encoder-only. Mask out 15% of tokens, predict them from context
+      <header><span class="var-year">2018</span><h3 data-i18n="var.bertTitle">BERT</h3><span class="var-by" data-i18n="var.bertBy">Google</span></header>
+      <p data-i18n="var.bertBody">Encoder-only. Mask out 15% of tokens, predict them from context
       in both directions. Bidirectional understanding — but not a generator.</p>
-      <div class="var-stats"><span>Encoder-only</span><span>Bidirectional</span></div>
+      <div class="var-stats"><span data-i18n="var.bertStat1">Encoder-only</span><span data-i18n="var.bertStat2">Bidirectional</span></div>
     </article>
     <article class="variant">
-      <header><span class="var-year">2019</span><h3>T5</h3><span class="var-by">Google</span></header>
-      <p>Encoder-decoder. Re-cast every NLP task as "text in, text out".
+      <header><span class="var-year">2019</span><h3 data-i18n="var.t5Title">T5</h3><span class="var-by" data-i18n="var.t5By">Google</span></header>
+      <p data-i18n="var.t5Body">Encoder-decoder. Re-cast every NLP task as "text in, text out".
       Translation, summarization, classification — one architecture.</p>
-      <div class="var-stats"><span>Enc–Dec</span><span>Seq2seq</span></div>
+      <div class="var-stats"><span data-i18n="var.t5Stat1">Enc–Dec</span><span data-i18n="var.t5Stat2">Seq2seq</span></div>
     </article>
     <article class="variant">
-      <header><span class="var-year">2020</span><h3>RoPE</h3><span class="var-by">Various</span></header>
-      <p>Rotary positional embeddings replace sinusoidal. Better length
+      <header><span class="var-year">2020</span><h3 data-i18n="var.ropeTitle">RoPE</h3><span class="var-by" data-i18n="var.ropeBy">Various</span></header>
+      <p data-i18n="var.ropeBody">Rotary positional embeddings replace sinusoidal. Better length
       generalization, cleaner relative-position arithmetic in attention.</p>
-      <div class="var-stats"><span>RoPE</span><span>Relative pos</span></div>
+      <div class="var-stats"><span data-i18n="var.ropeStat1">RoPE</span><span data-i18n="var.ropeStat2">Relative pos</span></div>
     </article>
     <article class="variant">
-      <header><span class="var-year">2023</span><h3>LLaMA</h3><span class="var-by">Meta</span></header>
-      <p>Open decoder-only. RMSNorm, SwiGLU FFN, RoPE. Defined the modern
+      <header><span class="var-year">2023</span><h3 data-i18n="var.llamaTitle">LLaMA</h3><span class="var-by" data-i18n="var.llamaBy">Meta</span></header>
+      <p data-i18n="var.llamaBody">Open decoder-only. RMSNorm, SwiGLU FFN, RoPE. Defined the modern
       "Llama-style" recipe that almost every open model follows today.</p>
-      <div class="var-stats"><span>Decoder</span><span>SwiGLU</span></div>
+      <div class="var-stats"><span data-i18n="var.llamaStat1">Decoder</span><span data-i18n="var.llamaStat2">SwiGLU</span></div>
     </article>
     <article class="variant">
-      <header><span class="var-year">2024</span><h3>MoE</h3><span class="var-by">Mixtral, Grok</span></header>
-      <p>Sparse FFN: route each token to a few of many expert sub-networks.
+      <header><span class="var-year">2024</span><h3 data-i18n="var.moeTitle">MoE</h3><span class="var-by" data-i18n="var.moeBy">Mixtral, Grok</span></header>
+      <p data-i18n="var.moeBody">Sparse FFN: route each token to a few of many expert sub-networks.
       Trillion-parameter scale, fractionally more compute per token.</p>
-      <div class="var-stats"><span>Sparse FFN</span><span>Routing</span></div>
+      <div class="var-stats"><span data-i18n="var.moeStat1">Sparse FFN</span><span data-i18n="var.moeStat2">Routing</span></div>
     </article>
   </div>
 
 <div class="up-next">
-  <div class="up-next-eyebrow">Up next · Section 15</div>
-  <h3 class="up-next-title">Bookmark this.</h3>
-  <p class="up-next-desc">Any time a word shows up in a paper and you forgot what it meant — come back to the glossary.</p>
-  <a class="up-next-link" href="#glossary">Continue → Glossary</a>
+  <div class="up-next-eyebrow" data-i18n="up14.eyebrow">Up next · Section 15</div>
+  <h3 class="up-next-title" data-i18n="up14.title">Bookmark this.</h3>
+  <p class="up-next-desc" data-i18n="up14.desc">Any time a word shows up in a paper and you forgot what it meant — come back to the glossary.</p>
+  <a class="up-next-link" href="#glossary" data-i18n="up14.link">Continue → Glossary</a>
 </div>
 </section>
 
 <!-- GLOSSARY -->
 <section class="section" id="glossary">
-  <div class="section-tag">14 · Glossary</div>
-  <div class="section-meta"><span>reference</span><span>reference</span></div>
-  <h2 class="section-title section-title--center">Every term, <em>in one place.</em></h2>
-  <p class="section-lede section-lede--center">
+  <div class="section-tag" data-i18n="gloss.tag">14 · Glossary</div>
+  <div class="section-meta"><span data-i18n="meta.reference">reference</span><span data-i18n="meta.reference2">reference</span></div>
+  <h2 class="section-title section-title--center" data-i18n="gloss.title">Every term, <em>in one place.</em></h2>
+  <p class="section-lede section-lede--center" data-i18n="gloss.lede">
     Bookmark this. Any time a word below shows up in a paper or video and
     you forgot what it meant, come back here.
   </p>
 
   <div class="glossary-grid">
     <div class="glossary-item">
-      <div class="glossary-term">Token</div>
-      <p class="glossary-def">A piece of text from a fixed vocabulary &mdash; usually a word, part of a word, or punctuation. The model never sees characters; it sees tokens.</p>
+      <div class="glossary-term" data-i18n="gloss.token">Token</div>
+      <p class="glossary-def" data-i18n="gloss.tokenDef">A piece of text from a fixed vocabulary &mdash; usually a word, part of a word, or punctuation. The model never sees characters; it sees tokens.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Embedding</div>
-      <p class="glossary-def">The vector of numbers that represents a token. Each token has one row in a giant learned table.</p>
+      <div class="glossary-term" data-i18n="gloss.emb">Embedding</div>
+      <p class="glossary-def" data-i18n="gloss.embDef">The vector of numbers that represents a token. Each token has one row in a giant learned table.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">d<sub>model</sub></div>
-      <p class="glossary-def">The width of every vector inside the model. Original paper: 512. Modern models: 4096 to 16384.</p>
+      <div class="glossary-term" data-i18n="gloss.dmodel">d<sub>model</sub></div>
+      <p class="glossary-def" data-i18n="gloss.dmodelDef">The width of every vector inside the model. Original paper: 512. Modern models: 4096 to 16384.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Query (Q)</div>
-      <p class="glossary-def">The &ldquo;question&rdquo; a token asks. &ldquo;Who here is relevant to me?&rdquo;</p>
+      <div class="glossary-term" data-i18n="gloss.q">Query (Q)</div>
+      <p class="glossary-def" data-i18n="gloss.qDef">The &ldquo;question&rdquo; a token asks. &ldquo;Who here is relevant to me?&rdquo;</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Key (K)</div>
-      <p class="glossary-def">The &ldquo;answer label&rdquo; a token carries. &ldquo;Here is what I am about.&rdquo;</p>
+      <div class="glossary-term" data-i18n="gloss.k">Key (K)</div>
+      <p class="glossary-def" data-i18n="gloss.kDef">The &ldquo;answer label&rdquo; a token carries. &ldquo;Here is what I am about.&rdquo;</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Value (V)</div>
-      <p class="glossary-def">The &ldquo;information&rdquo; a token contributes if selected. &ldquo;If you decide I'm relevant, here's what to take from me.&rdquo;</p>
+      <div class="glossary-term" data-i18n="gloss.v">Value (V)</div>
+      <p class="glossary-def" data-i18n="gloss.vDef">The &ldquo;information&rdquo; a token contributes if selected. &ldquo;If you decide I'm relevant, here's what to take from me.&rdquo;</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Attention score</div>
-      <p class="glossary-def">A single number for every pair of positions, computed as Q · K. Higher means &ldquo;more related&rdquo;.</p>
+      <div class="glossary-term" data-i18n="gloss.score">Attention score</div>
+      <p class="glossary-def" data-i18n="gloss.scoreDef">A single number for every pair of positions, computed as Q · K. Higher means &ldquo;more related&rdquo;.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Softmax</div>
-      <p class="glossary-def">A function that turns any list of numbers into a probability distribution &mdash; every output is in (0, 1) and they sum to 1.</p>
+      <div class="glossary-term" data-i18n="gloss.softmax">Softmax</div>
+      <p class="glossary-def" data-i18n="gloss.softmaxDef">A function that turns any list of numbers into a probability distribution &mdash; every output is in (0, 1) and they sum to 1.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Scaled dot-product</div>
-      <p class="glossary-def">The full formula: softmax(QKᵀ / √d<sub>k</sub>) V. The √d<sub>k</sub> keeps the numbers from getting too large.</p>
+      <div class="glossary-term" data-i18n="gloss.sdp">Scaled dot-product</div>
+      <p class="glossary-def" data-i18n="gloss.sdpDef">The full formula: softmax(QKᵀ / √d<sub>k</sub>) V. The √d<sub>k</sub> keeps the numbers from getting too large.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Head</div>
-      <p class="glossary-def">One parallel attention computation. A model with 8 heads runs 8 attentions at once, on different slices of the embedding.</p>
+      <div class="glossary-term" data-i18n="gloss.head">Head</div>
+      <p class="glossary-def" data-i18n="gloss.headDef">One parallel attention computation. A model with 8 heads runs 8 attentions at once, on different slices of the embedding.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Positional encoding</div>
-      <p class="glossary-def">A vector added to each token's embedding so the model knows where it sits in the sequence.</p>
+      <div class="glossary-term" data-i18n="gloss.pos">Positional encoding</div>
+      <p class="glossary-def" data-i18n="gloss.posDef">A vector added to each token's embedding so the model knows where it sits in the sequence.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Residual connection</div>
-      <p class="glossary-def">Adding the input of a layer back to its output: <code>output = x + Sublayer(x)</code>. Lets gradients flow and lets layers learn small adjustments.</p>
+      <div class="glossary-term" data-i18n="gloss.res">Residual connection</div>
+      <p class="glossary-def" data-i18n="gloss.resDef">Adding the input of a layer back to its output: <code>output = x + Sublayer(x)</code>. Lets gradients flow and lets layers learn small adjustments.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">LayerNorm</div>
-      <p class="glossary-def">A normalization that rescales every vector to mean 0, variance 1. Keeps activations well-behaved at every depth.</p>
+      <div class="glossary-term" data-i18n="gloss.ln">LayerNorm</div>
+      <p class="glossary-def" data-i18n="gloss.lnDef">A normalization that rescales every vector to mean 0, variance 1. Keeps activations well-behaved at every depth.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">FFN (Feed-Forward Network)</div>
-      <p class="glossary-def">Two linear layers with a non-linearity between, applied independently to every token. Most of the model's parameters live here.</p>
+      <div class="glossary-term" data-i18n="gloss.ffn">FFN (Feed-Forward Network)</div>
+      <p class="glossary-def" data-i18n="gloss.ffnDef">Two linear layers with a non-linearity between, applied independently to every token. Most of the model's parameters live here.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Encoder</div>
-      <p class="glossary-def">A stack of layers that reads a full sequence with bidirectional attention. Used for understanding tasks.</p>
+      <div class="glossary-term" data-i18n="gloss.enc">Encoder</div>
+      <p class="glossary-def" data-i18n="gloss.encDef">A stack of layers that reads a full sequence with bidirectional attention. Used for understanding tasks.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Decoder</div>
-      <p class="glossary-def">A stack of layers that generates a sequence one token at a time, with masked (causal) attention. Used for generation.</p>
+      <div class="glossary-term" data-i18n="gloss.dec">Decoder</div>
+      <p class="glossary-def" data-i18n="gloss.decDef">A stack of layers that generates a sequence one token at a time, with masked (causal) attention. Used for generation.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Causal mask</div>
-      <p class="glossary-def">A triangular mask that prevents position <em>i</em> from attending to positions &gt; <em>i</em>. Required for autoregressive generation.</p>
+      <div class="glossary-term" data-i18n="gloss.causal">Causal mask</div>
+      <p class="glossary-def" data-i18n="gloss.causalDef">A triangular mask that prevents position <em>i</em> from attending to positions &gt; <em>i</em>. Required for autoregressive generation.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Cross-attention</div>
-      <p class="glossary-def">Attention where Q comes from the decoder but K and V come from the encoder. The bridge between the two stacks.</p>
+      <div class="glossary-term" data-i18n="gloss.cross">Cross-attention</div>
+      <p class="glossary-def" data-i18n="gloss.crossDef">Attention where Q comes from the decoder but K and V come from the encoder. The bridge between the two stacks.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Autoregressive</div>
-      <p class="glossary-def">Generating output one token at a time, feeding each prediction back into the model as input for the next.</p>
+      <div class="glossary-term" data-i18n="gloss.ar">Autoregressive</div>
+      <p class="glossary-def" data-i18n="gloss.arDef">Generating output one token at a time, feeding each prediction back into the model as input for the next.</p>
     </div>
     <div class="glossary-item">
-      <div class="glossary-term">Logits</div>
-      <p class="glossary-def">Raw scores for every possible next token, right before the final softmax. Larger = the model thinks it's more likely.</p>
+      <div class="glossary-term" data-i18n="gloss.logits">Logits</div>
+      <p class="glossary-def" data-i18n="gloss.logitsDef">Raw scores for every possible next token, right before the final softmax. Larger = the model thinks it's more likely.</p>
     </div>
   </div>
 </section>
@@ -1288,11 +1293,11 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="brand-dot"></span>
-      <span>An Annotated Transformer</span>
+      <span data-i18n="brand">An Annotated Transformer</span>
     </div>
     <div class="footer-cols">
       <div>
-        <h4>Read next</h4>
+        <h4 data-i18n="foot.readNext">Read next</h4>
         <ul>
           <li>The Illustrated Transformer — Jay Alammar</li>
           <li>Attention Is All You Need — Vaswani et al.</li>
@@ -1301,7 +1306,7 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
         </ul>
       </div>
       <div>
-        <h4>Implementations</h4>
+        <h4 data-i18n="foot.impls">Implementations</h4>
         <ul>
           <li>minbpe (BPE tokenizer)</li>
           <li>PyTorch nn.Transformer</li>
@@ -1310,18 +1315,19 @@ PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
         </ul>
       </div>
       <div>
-        <h4>About</h4>
-        <p>An independent visual field guide. No tracking, no analytics, just
+        <h4 data-i18n="foot.about">About</h4>
+        <p data-i18n="foot.aboutBody">An independent visual field guide. No tracking, no analytics, just
         a slow walk through the architecture that quietly runs your phone.</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>Built as a reading experience.</span>
-      <span>Press <kbd>G</kbd> to top · <kbd>J</kbd>/<kbd>K</kbd> to step.</span>
+      <span data-i18n="foot.built">Built as a reading experience.</span>
+      <span data-i18n="foot.keys">Press <kbd>G</kbd> to top · <kbd>J</kbd>/<kbd>K</kbd> to step.</span>
     </div>
   </div>
 </footer>
 
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
